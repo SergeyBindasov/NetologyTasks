@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import iOSIntPackage
 
 class ProfileTableHederView: UIView {
     
@@ -80,6 +81,7 @@ class ProfileTableHederView: UIView {
         }
         addSubviews(avatarImageView, title, status, setStatusTextField, button)
         setupHeader()
+        setFilter()
       }
       
       required init?(coder: NSCoder) {
@@ -93,6 +95,13 @@ class ProfileTableHederView: UIView {
     @objc private func buttonPressed() {
         setStatusTextField.text = status.text ?? "Нет статуса"
     }
+    
+    private func setFilter() {
+            let processor = ImageProcessor()
+        processor.processImage(sourceImage: UIImage(named: "20") ?? UIImage(), filter: .noir) { image in
+                avatarImageView.image = image
+            }
+        }
     
     private func setupHeader() {
         
