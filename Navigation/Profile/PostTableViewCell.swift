@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PostTableViewCell: UITableViewCell {
     
@@ -57,7 +58,7 @@ class PostTableViewCell: UITableViewCell {
         views.textColor = .black
         return views
     }()
-   
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         setupLayout()
@@ -71,22 +72,31 @@ class PostTableViewCell: UITableViewCell {
         
         contentView.addSubviews(postAuthor, postImageView, postDescription, postLikes, postViews)
         
-        let constraints = [
-            postAuthor.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            postAuthor.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            postImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
-            postImageView.topAnchor.constraint(equalTo: postAuthor.bottomAnchor, constant: 12),
-            postImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            postImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            postDescription.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            postDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            postDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            postLikes.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
-            postViews.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
-            postLikes.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            postViews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            postViews.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-        ]
-        NSLayoutConstraint.activate(constraints)
+        postAuthor.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        postImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(contentView.snp.width)
+            make.top.equalTo(postAuthor.snp.bottom).offset(12)
+        }
+        
+        postDescription.snp.makeConstraints { make in
+            make.top.equalTo(postImageView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(10)
+        }
+        
+        postLikes.snp.makeConstraints { make in
+            make.top.equalTo(postDescription.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        postViews.snp.makeConstraints {make in
+            make.top.equalTo(postDescription.snp.bottom).offset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(contentView.snp_bottomMargin).inset(10)
+        }
     }
 }

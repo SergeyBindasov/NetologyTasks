@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileTableHederView: UIView {
     
@@ -90,32 +91,38 @@ class ProfileTableHederView: UIView {
     }
     
     @objc private func buttonPressed() {
-    setStatusTextField.text = status.text ?? "Нет статуса"
+        setStatusTextField.text = status.text ?? "Нет статуса"
     }
     
     private func setupHeader() {
         
-        let constraints = [
-            avatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 150),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 150),
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 27),
-            title.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),
-            status.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 25),
-            status.topAnchor.constraint(equalTo: topAnchor, constant: 94),
-            status.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            setStatusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 25),
-            setStatusTextField.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 10),
-            setStatusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            setStatusTextField.heightAnchor.constraint(equalToConstant: 40),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            button.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
-            
-        ]
-        NSLayoutConstraint.activate(constraints)
+        avatarImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(150)
+            make.top.leading.equalToSuperview().offset(16)
+        }
+        title.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(27)
+            make.leading.equalTo(avatarImageView.snp.trailing).offset(10)
+        }
+        status.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).offset(25)
+            make.top.equalToSuperview().offset(94)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        setStatusTextField.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp.trailing).offset(25)
+            make.top.equalTo(status.snp.bottom).offset(10)
+            make.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(40)
+        }
+        
+        button.snp.makeConstraints { make in
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.top.equalTo(avatarImageView.snp.bottom).offset(16)
+        }
     }
 }
