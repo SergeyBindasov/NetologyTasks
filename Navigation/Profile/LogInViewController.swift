@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func shouldLoginChecked() -> Bool
+    func shouldPasswordChecked() -> Bool
+}
+
 class LogInViewController: UIViewController {
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -45,7 +52,7 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-    private lazy var loginTF: UITextField = {
+    internal lazy var loginTF: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -62,7 +69,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    private lazy var passwordTF: UITextField = {
+    internal lazy var passwordTF: UITextField = {
         let secondTextField = UITextField()
         secondTextField.placeholder = "Password"
         secondTextField.layer.borderColor = UIColor.lightGray.cgColor

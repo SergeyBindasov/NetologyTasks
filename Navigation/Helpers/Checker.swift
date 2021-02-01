@@ -18,7 +18,7 @@ class Checker {
     var login = "Sergey"
     var password = "Bindasov"
     
-    func checkLogin() -> Bool {
+    func checkLogin(_: String) -> Bool {
         if login == login {
             return true
         } else {
@@ -26,7 +26,7 @@ class Checker {
         }
     }
     
-    func checkPassword() -> Bool {
+    func checkPassword(_: String) -> Bool {
         if password == password {
             return true
         } else {
