@@ -9,8 +9,8 @@
 import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
-    func shouldLoginChecked() -> Bool
-    func shouldPasswordChecked() -> Bool
+    func shouldLoginChecked(login: String) -> Bool
+    func shouldPasswordChecked(password: String) -> Bool
 }
 
 class LogInViewController: UIViewController {
@@ -120,8 +120,11 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        performSegue(withIdentifier: "toProfilePage", sender: nil)
-        
+        let checker = LoginChecker()
+
+        if checker.shouldLoginChecked(login: loginTF.text ?? "blank") && checker.shouldPasswordChecked(password: passwordTF.text ?? "blank") == true {
+            performSegue(withIdentifier: "toProfilePage", sender: nil)
+        }
     }
     
     @objc private func enterLogin(_ textField: UITextField) {

@@ -9,22 +9,24 @@
 import UIKit
 
 class LoginChecker: UIViewController, LoginViewControllerDelegate {
-   
-    private lazy var loginView: LogInViewController = {
-        let view = LogInViewController()
-        view.delegate = self
-        return view
-    }()
-   
-    func shouldLoginChecked() -> Bool {
-        guard let login = loginView.loginTF.text else { return false }
-        return Checker.shared.checkLogin(login)
-    }
-    
-    func shouldPasswordChecked() -> Bool {
-        guard let password = loginView.passwordTF.text else { return false }
-        return Checker.shared.checkPassword(password)
+ 
+    func shouldLoginChecked(login: String) -> Bool {
         
+        if login == Checker.shared.login {
+            return true
+        }
+        print("Login incorrect")
+        return false
     }
     
+    
+    func shouldPasswordChecked(password: String) -> Bool {
+        
+        let validPassword = Checker.shared.password
+        if password == validPassword {
+            return true
+        }
+        print("Pswd incorrect")
+        return false
+    }
 }
