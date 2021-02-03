@@ -15,8 +15,8 @@ class Checker {
         return info
     }()
     
-    var login = "Sergey"
-    var password = "Bindasov"
+    var login = "12"
+    var password = "345"
     
     func checkLogin(_: String) -> Bool {
         if login == login {
