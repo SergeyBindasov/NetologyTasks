@@ -15,7 +15,7 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 class LogInViewController: UIViewController {
     
-    weak var delegate: LoginViewControllerDelegate?
+    var delegate: LoginViewControllerDelegate?
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -100,6 +100,7 @@ class LogInViewController: UIViewController {
         setupLayout()
         
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -120,10 +121,14 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        let checker = LoginChecker()
-
-        if checker.shouldLoginChecked(login: loginTF.text ?? "blank") && checker.shouldPasswordChecked(password: passwordTF.text ?? "blank") == true {
-            performSegue(withIdentifier: "toProfilePage", sender: nil)
+        
+        
+        if (delegate?.shouldLoginChecked(login: loginTF.text!))! && (delegate?.shouldPasswordChecked(password: passwordTF.text!))! == true {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let profileVC = storyboard.instantiateViewController(identifier: "profileVC")
+            show(profileVC, sender: nil)
+        } else {
+            print("Incorrect login/password")
         }
     }
     

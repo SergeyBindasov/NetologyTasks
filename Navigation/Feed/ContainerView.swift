@@ -17,6 +17,7 @@ class ContainerView: UIView {
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1.0), for: .normal)
+        button.addTarget(self, action: #selector(toPost), for: .touchUpInside)
         
         return button
     }()
@@ -49,6 +50,11 @@ class ContainerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func toPost(){
+        //onTap()
+        
     }
 }
 

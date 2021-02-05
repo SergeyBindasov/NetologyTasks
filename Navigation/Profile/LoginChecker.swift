@@ -9,7 +9,8 @@
 import UIKit
 
 class LoginChecker: UIViewController, LoginViewControllerDelegate {
- 
+    
+
     func shouldLoginChecked(login: String) -> Bool {
         
         if login == Checker.shared.login {
@@ -28,5 +29,10 @@ class LoginChecker: UIViewController, LoginViewControllerDelegate {
         }
         print("Pswd incorrect")
         return false
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

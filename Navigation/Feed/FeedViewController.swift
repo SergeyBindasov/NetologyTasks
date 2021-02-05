@@ -12,7 +12,14 @@ final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     
-    let containerView = ContainerView()
+    
+    private lazy var containerView: ContainerView = {
+        let container = ContainerView()
+        
+        return container
+        
+    }()
+    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -22,6 +29,7 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(containerView)
+        //performSegue(withIdentifier: "toPost", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
