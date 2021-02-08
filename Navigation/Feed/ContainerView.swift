@@ -10,6 +10,8 @@ import UIKit
 
 class ContainerView: UIView {
     
+    var onTap: (() -> Void)?
+    
     lazy var firstButton: UIButton = {
         let button = UIButton()
         button.setTitle("First Button", for: .normal)
@@ -17,7 +19,7 @@ class ContainerView: UIView {
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1.0), for: .normal)
-        button.addTarget(self, action: #selector(toPost), for: .touchUpInside)
+        button.addTarget(self, action: #selector(firstButtonPressed), for: .touchUpInside)
         
         return button
     }()
@@ -29,6 +31,7 @@ class ContainerView: UIView {
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(1.0), for: .normal)
+        button.addTarget(self, action: #selector(secondButtonPressed), for: .touchUpInside)
         
         return button
     }()
@@ -52,10 +55,14 @@ class ContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func toPost(){
-        //onTap()
-        
+    @objc func firstButtonPressed(){
+        onTap?()
     }
+    
+    @objc func secondButtonPressed() {
+        onTap?()
+    }
+    
 }
 
 extension ContainerView {
@@ -71,7 +78,6 @@ extension ContainerView {
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
 }

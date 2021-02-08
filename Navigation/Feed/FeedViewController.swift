@@ -8,38 +8,43 @@
 
 import UIKit
 
+protocol FeedViewOutput {
+    var navigationController: UINavigationController? { get set }
+    func showPost()
+    
+}
+
 final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     
+    var output: FeedViewOutput?
+    
+    
+    init(output: FeedViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super .init(coder: coder)
+    }
+    
     
     private lazy var containerView: ContainerView = {
         let container = ContainerView()
-        
+        container.onTap = {
+            self.output?.showPost()
+        }
         return container
-        
     }()
-    
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(containerView)
-        //performSegue(withIdentifier: "toPost", sender: nil)
+        output?.navigationController = self.navigationController
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "post" else {
-            return
-        }
-        guard let postViewController = segue.destination as? PostViewController else {
-            return
-        }
-        postViewController.post = post
-    }
 }
 
