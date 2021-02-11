@@ -9,9 +9,10 @@
 import UIKit
 
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, Storyboarded {
     
-        
+    weak var coordinator: MainCoordinator?
+    
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
         tv.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
@@ -96,7 +97,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            var newController = PhotosViewController()
+            let newController = PhotosViewController()
             navigationController?.pushViewController(newController, animated: true)
         } else { return }
     }

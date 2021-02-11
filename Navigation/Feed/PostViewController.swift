@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: MainCoordinator?
     
     var post: Post?
 

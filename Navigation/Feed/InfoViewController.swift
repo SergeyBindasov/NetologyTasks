@@ -8,7 +8,9 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class InfoViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: MainCoordinator?
 
     
     @IBAction func showAlert(_ sender: Any) {

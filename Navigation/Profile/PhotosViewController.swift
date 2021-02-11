@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: MainCoordinator?
     
     private lazy var galleryCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
