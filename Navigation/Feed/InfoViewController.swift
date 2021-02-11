@@ -8,9 +8,10 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
-
+class InfoViewController: UIViewController, Storyboarded {
     
+    weak var coordinator: FeedFlowCoordinator?
+     
     @IBAction func showAlert(_ sender: Any) {
         let alertController = UIAlertController(title: "Удалить пост?", message: "Пост нельзя будет восстановить", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in

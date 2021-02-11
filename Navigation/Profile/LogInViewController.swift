@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, Storyboarded {
+    
+    weak var coordinator: ProfileFlowCoordinator?
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -18,6 +20,7 @@ class LogInViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
         return scrollView
@@ -90,6 +93,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         setupLayout()
         
         
@@ -113,8 +117,7 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        performSegue(withIdentifier: "toProfilePage", sender: nil)
-        
+        coordinator?.loginAction()
     }
     
     @objc private func enterLogin(_ textField: UITextField) {
@@ -122,8 +125,6 @@ class LogInViewController: UIViewController {
     
     @objc private func enterPassword(_ textField: UITextField) {
     }
-    
-    
     
     // MARK: setupLayout
     
@@ -133,10 +134,10 @@ class LogInViewController: UIViewController {
         loginView.addSubviews(vkLogo, loginButton, stackViewTF)
         
         let constraints = [
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             loginView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             loginView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -157,7 +158,7 @@ class LogInViewController: UIViewController {
             loginButton.topAnchor.constraint(equalTo: stackViewTF.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -16),
-            loginButton.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -135)
+            loginButton.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -150)
         ]
         NSLayoutConstraint.activate(constraints)
     }
