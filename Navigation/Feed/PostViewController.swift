@@ -8,14 +8,20 @@
 
 import UIKit
 
-class PostViewController: UIViewController, Storyboarded {
+class PostViewController: UIViewController {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: FeedFlowCoordinator?
     
     var post: Post?
+    
+    @objc func addButtonPreseed() {
+        coordinator?.showInfo()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = post?.title
+        view.backgroundColor = .cyan
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPreseed))
     }
 }

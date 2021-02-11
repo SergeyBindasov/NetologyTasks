@@ -11,7 +11,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, Storyboarded {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: ProfileFlowCoordinator?
     
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
@@ -28,8 +28,8 @@ class ProfileViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        
     }
     
     private func setupLayout() {
@@ -97,8 +97,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let newController = PhotosViewController()
-            navigationController?.pushViewController(newController, animated: true)
+            coordinator?.showGallery()
         } else { return }
     }
 }

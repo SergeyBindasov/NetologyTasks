@@ -10,7 +10,7 @@ import UIKit
 
 class LogInViewController: UIViewController, Storyboarded {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: ProfileFlowCoordinator?
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -117,8 +117,7 @@ class LogInViewController: UIViewController, Storyboarded {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        performSegue(withIdentifier: "toProfilePage", sender: nil)
-        
+        coordinator?.loginAction()
     }
     
     @objc private func enterLogin(_ textField: UITextField) {
@@ -126,8 +125,6 @@ class LogInViewController: UIViewController, Storyboarded {
     
     @objc private func enterPassword(_ textField: UITextField) {
     }
-    
-    
     
     // MARK: setupLayout
     

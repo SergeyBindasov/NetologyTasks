@@ -12,16 +12,30 @@ class MainCoordinator: Coordinator {
     var childCoordinator = [Coordinator]()
     var navigationController: UINavigationController
     
+    let tabbar = TabBarController()
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-         }
+    }
     
     func start() {
-        let tabbar = TabBarController()
-        tabbar.coordinator = self
-        tabbar.setTabBar()
+        
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(tabbar, animated: true)
+        
+        let feedNavigation = UINavigationController()
+        feedNavigation.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
+        let feedFlowCoordinator = FeedFlowCoordinator(navigationController: feedNavigation)
+        
+        let profileNavigation = UINavigationController()
+        profileNavigation.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 0)
+        let profileFlowCoordinator = ProfileFlowCoordinator(navigationController: profileNavigation)
+        
+        childCoordinator = [feedFlowCoordinator, profileFlowCoordinator]
+        feedFlowCoordinator.start()
+        profileFlowCoordinator.start()
+        
+        tabbar.viewControllers = [feedNavigation, profileNavigation]
     }
 }
 

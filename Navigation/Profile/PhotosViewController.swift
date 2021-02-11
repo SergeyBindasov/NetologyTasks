@@ -10,7 +10,7 @@ import UIKit
 
 class PhotosViewController: UIViewController, Storyboarded {
     
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: ProfileFlowCoordinator?
     
     private lazy var galleryCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
