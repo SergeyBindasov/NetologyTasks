@@ -10,27 +10,16 @@ import UIKit
 
 class LoginChecker: UIViewController, LoginViewControllerDelegate {
     
-
+    
     func shouldLoginChecked(login: String) -> Bool {
         
-        if login == Checker.shared.login {
-            return true
-        }
-        print("Login incorrect")
-        return false
+        return login == Checker.shared.login
     }
-    
     
     func shouldPasswordChecked(password: String) -> Bool {
         
-        let validPassword = Checker.shared.password
-        if password == validPassword {
-            return true
-        }
-        print("Pswd incorrect")
-        return false
+        return password == Checker.shared.password
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

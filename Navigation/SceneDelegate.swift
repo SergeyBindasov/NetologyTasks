@@ -21,13 +21,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let loginCheker = LoginChecker()
         let presenter = PostPresenter()
-        
+        let feedVC = FeedViewController(output: presenter)
+
+  
         if let tabController = window?.rootViewController as? UITabBarController, let loginNavigation = tabController.viewControllers?.last as? UINavigationController, let loginController = loginNavigation.viewControllers.first as? LogInViewController {
+            tabController.present(feedVC, animated: true, completion: nil)
             loginController.delegate = loginCheker
         }
         
         if let tabController = window?.rootViewController as? UITabBarController, let feedNavigation = tabController.viewControllers?.first as? UINavigationController, let feedController = feedNavigation.viewControllers.first as? FeedViewController {
-            feedController.output = presenter
+            ///???
         }
     }
 

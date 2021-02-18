@@ -18,7 +18,7 @@ final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     
-    var output: FeedViewOutput?
+    private var output: FeedViewOutput
     
     
     init(output: FeedViewOutput) {
@@ -27,14 +27,15 @@ final class FeedViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        super .init(coder: coder)
+        self.output = PostPresenter()
+        super.init(nibName: nil, bundle: nil)
     }
     
     
     private lazy var containerView: ContainerView = {
         let container = ContainerView()
         container.onTap = {
-            self.output?.showPost()
+            self.output.showPost()
         }
         return container
     }()
@@ -43,7 +44,7 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(containerView)
-        output?.navigationController = self.navigationController
+        output.navigationController = self.navigationController
     }
     
 }

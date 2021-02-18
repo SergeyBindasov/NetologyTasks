@@ -52,7 +52,7 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-    internal lazy var loginTF: UITextField = {
+    private lazy var loginTF: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -69,7 +69,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    internal lazy var passwordTF: UITextField = {
+    private lazy var passwordTF: UITextField = {
         let secondTextField = UITextField()
         secondTextField.placeholder = "Password"
         secondTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -121,14 +121,15 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
+        guard let login = loginTF.text else { return }
+        guard let password = passwordTF.text else { return }
         
-        
-        if (delegate?.shouldLoginChecked(login: loginTF.text!))! && (delegate?.shouldPasswordChecked(password: passwordTF.text!))! == true {
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let profileVC = storyboard.instantiateViewController(identifier: "profileVC")
-            show(profileVC, sender: nil)
-        } else {
-            print("Incorrect login/password")
+        if let correctLogin = delegate?.shouldLoginChecked(login: login), let correctPassword = delegate?.shouldPasswordChecked(password: password) {
+            if correctLogin && correctPassword == true {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let profileVC = storyboard.instantiateViewController(identifier: "profileVC")
+                show(profileVC, sender: nil)
+            }
         }
     }
     

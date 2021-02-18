@@ -18,6 +18,8 @@ class Checker {
     var login = "12"
     var password = "345"
     
+    private init() { }
+    
     func checkLogin(_: String) -> Bool {
         if login == login {
             return true
