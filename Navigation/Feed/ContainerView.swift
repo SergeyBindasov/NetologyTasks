@@ -46,7 +46,7 @@ class ContainerView: UIView {
     }()
     
     override init(frame: CGRect) {
-        super .init(frame: UIScreen.main.bounds)
+        super.init(frame: UIScreen.main.bounds)
         addSubviews(stackView)
         setupLayout()
     }
