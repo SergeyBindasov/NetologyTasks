@@ -96,7 +96,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            var newController = PhotosViewController()
+            let newController = PhotosViewController()
             navigationController?.pushViewController(newController, animated: true)
         } else { return }
     }

@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func shouldLoginChecked(login: String) -> Bool
+    func shouldPasswordChecked(password: String) -> Bool
+}
+
 class LogInViewController: UIViewController {
+    
+    var delegate: LoginViewControllerDelegate?
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -93,6 +100,7 @@ class LogInViewController: UIViewController {
         setupLayout()
         
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -113,8 +121,16 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        performSegue(withIdentifier: "toProfilePage", sender: nil)
+        guard let login = loginTF.text else { return }
+        guard let password = passwordTF.text else { return }
         
+        if let correctLogin = delegate?.shouldLoginChecked(login: login), let correctPassword = delegate?.shouldPasswordChecked(password: password) {
+            if correctLogin && correctPassword == true {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let profileVC = storyboard.instantiateViewController(identifier: "profileVC")
+                show(profileVC, sender: nil)
+            }
+        }
     }
     
     @objc private func enterLogin(_ textField: UITextField) {
