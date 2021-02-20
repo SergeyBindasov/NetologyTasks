@@ -11,7 +11,6 @@ import UIKit
 protocol FeedViewOutput {
     var navigationController: UINavigationController? { get set }
     func showPost()
-    
 }
 
 final class FeedViewController: UIViewController {
@@ -19,7 +18,6 @@ final class FeedViewController: UIViewController {
     let post: Post = Post(title: "Пост")
     
     private var output: FeedViewOutput
-    
     
     init(output: FeedViewOutput) {
         self.output = output
@@ -30,7 +28,6 @@ final class FeedViewController: UIViewController {
         self.output = PostPresenter()
         super.init(nibName: nil, bundle: nil)
     }
-    
     
     private lazy var containerView: ContainerView = {
         let container = ContainerView()
