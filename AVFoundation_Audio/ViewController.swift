@@ -34,9 +34,13 @@ class ViewController: UIViewController {
     @IBAction func StopButton(_ sender: Any) {
         if Player.isPlaying {
             Player.stop()
+            Player.currentTime = 0
         }
-        else {
-            print("Already stopped!")
+            
+    }
+    @IBAction func pauseButton(_ sender: Any) {
+        if Player.isPlaying {
+            Player.pause()
         }
     }
 }
