@@ -27,21 +27,3 @@ struct MusicContent {
                           MusicStruct(song: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Placebo - Song to Say Goodbye", ofType: "mp3") ?? "no track"), songTitle: "Placebo - Song to Say Goodbye", cover: UIImage(named: "05")!)
     ]
 }
-/*
-private lazy var webView: WKWebView = {
-    let view = WKWebView()
-    let url = URL(string: youtubeString)
-    let request = URLRequest(url: url!)
-    view.frame = .init(x: 100, y: 200, width: 400, height: 400)
-    view.load(request)
-    return view
-}()
-
-
-
-
-
-
-
-
- */
