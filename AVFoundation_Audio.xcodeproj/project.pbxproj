@@ -12,11 +12,11 @@
 		15B5622E25DE323900D5B871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B5622D25DE323900D5B871 /* Assets.xcassets */; };
 		15B5623125DE323900D5B871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15B5622F25DE323900D5B871 /* LaunchScreen.storyboard */; };
 		15B5623B25DE403800D5B871 /* Queen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 15B5623A25DE403800D5B871 /* Queen.mp3 */; };
-		A533385625F66856003B8CB1 /* Placebo - Song to Say Goodbye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A533385525F66856003B8CB1 /* Placebo - Song to Say Goodbye.mp3 */; };
-		A533385925F66956003B8CB1 /* Madonna - Borderline.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A533385825F66956003B8CB1 /* Madonna - Borderline.mp3 */; };
-		A533385C25F669B9003B8CB1 /* Dolly Parton - Jolene.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A533385B25F669B9003B8CB1 /* Dolly Parton - Jolene.mp3 */; };
-		A533385F25F66A6C003B8CB1 /* Miley Cyrus - Plastic Hearts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A533385E25F66A6C003B8CB1 /* Miley Cyrus - Plastic Hearts.mp3 */; };
-		A533386225F66B01003B8CB1 /* David Bowie - Life On Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A533386125F66B01003B8CB1 /* David Bowie - Life On Mars.mp3 */; };
+		A5842AE22600D4E90059F6E5 /* Dolly Parton - Jolene.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5842AE12600D4E80059F6E5 /* Dolly Parton - Jolene.mp3 */; };
+		A5842AE52600D4EF0059F6E5 /* David Bowie - Life On Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5842AE42600D4EF0059F6E5 /* David Bowie - Life On Mars.mp3 */; };
+		A5842AE82600D4F40059F6E5 /* Miley Cyrus - Plastic Hearts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5842AE72600D4F40059F6E5 /* Miley Cyrus - Plastic Hearts.mp3 */; };
+		A5842AEB2600D4F90059F6E5 /* Placebo - Song to Say Goodbye.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5842AEA2600D4F90059F6E5 /* Placebo - Song to Say Goodbye.mp3 */; };
+		A5842AEE2600D4FD0059F6E5 /* Madonna - Borderline.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5842AED2600D4FD0059F6E5 /* Madonna - Borderline.mp3 */; };
 		A5AB35C125FA601900C9EE7B /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AB35C025FA601900C9EE7B /* AudioViewController.swift */; };
 		A5AB35C825FA61CF00C9EE7B /* AddSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AB35C725FA61CF00C9EE7B /* AddSubview.swift */; };
 		A5AB35CB25FA755800C9EE7B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AB35CA25FA755800C9EE7B /* Music.swift */; };
@@ -33,11 +33,11 @@
 		15B5623025DE323900D5B871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15B5623225DE323900D5B871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15B5623A25DE403800D5B871 /* Queen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Queen.mp3; sourceTree = "<group>"; };
-		A533385525F66856003B8CB1 /* Placebo - Song to Say Goodbye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Placebo - Song to Say Goodbye.mp3"; path = "../../../../../../../Downloads/Placebo - Song to Say Goodbye.mp3"; sourceTree = "<group>"; };
-		A533385825F66956003B8CB1 /* Madonna - Borderline.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Madonna - Borderline.mp3"; path = "../../../../../../../Downloads/Madonna - Borderline.mp3"; sourceTree = "<group>"; };
-		A533385B25F669B9003B8CB1 /* Dolly Parton - Jolene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Dolly Parton - Jolene.mp3"; path = "../../../../../../../Downloads/Dolly Parton - Jolene.mp3"; sourceTree = "<group>"; };
-		A533385E25F66A6C003B8CB1 /* Miley Cyrus - Plastic Hearts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Miley Cyrus - Plastic Hearts.mp3"; path = "../../../../../../../Downloads/Miley Cyrus - Plastic Hearts.mp3"; sourceTree = "<group>"; };
-		A533386125F66B01003B8CB1 /* David Bowie - Life On Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "David Bowie - Life On Mars.mp3"; path = "../../../../../../../Downloads/David Bowie - Life On Mars.mp3"; sourceTree = "<group>"; };
+		A5842AE12600D4E80059F6E5 /* Dolly Parton - Jolene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dolly Parton - Jolene.mp3"; sourceTree = "<group>"; };
+		A5842AE42600D4EF0059F6E5 /* David Bowie - Life On Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "David Bowie - Life On Mars.mp3"; sourceTree = "<group>"; };
+		A5842AE72600D4F40059F6E5 /* Miley Cyrus - Plastic Hearts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Miley Cyrus - Plastic Hearts.mp3"; sourceTree = "<group>"; };
+		A5842AEA2600D4F90059F6E5 /* Placebo - Song to Say Goodbye.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Placebo - Song to Say Goodbye.mp3"; sourceTree = "<group>"; };
+		A5842AED2600D4FD0059F6E5 /* Madonna - Borderline.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Madonna - Borderline.mp3"; sourceTree = "<group>"; };
 		A5AB35C025FA601900C9EE7B /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		A5AB35C725FA61CF00C9EE7B /* AddSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubview.swift; sourceTree = "<group>"; };
 		A5AB35CA25FA755800C9EE7B /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -94,12 +94,12 @@
 		15B5623925DE3FDE00D5B871 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				A5842AED2600D4FD0059F6E5 /* Madonna - Borderline.mp3 */,
+				A5842AEA2600D4F90059F6E5 /* Placebo - Song to Say Goodbye.mp3 */,
+				A5842AE12600D4E80059F6E5 /* Dolly Parton - Jolene.mp3 */,
+				A5842AE42600D4EF0059F6E5 /* David Bowie - Life On Mars.mp3 */,
+				A5842AE72600D4F40059F6E5 /* Miley Cyrus - Plastic Hearts.mp3 */,
 				A5AB35CA25FA755800C9EE7B /* Music.swift */,
-				A533386125F66B01003B8CB1 /* David Bowie - Life On Mars.mp3 */,
-				A533385E25F66A6C003B8CB1 /* Miley Cyrus - Plastic Hearts.mp3 */,
-				A533385B25F669B9003B8CB1 /* Dolly Parton - Jolene.mp3 */,
-				A533385825F66956003B8CB1 /* Madonna - Borderline.mp3 */,
-				A533385525F66856003B8CB1 /* Placebo - Song to Say Goodbye.mp3 */,
 				15B5623A25DE403800D5B871 /* Queen.mp3 */,
 			);
 			path = Music;
@@ -162,14 +162,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A533386225F66B01003B8CB1 /* David Bowie - Life On Mars.mp3 in Resources */,
-				A533385F25F66A6C003B8CB1 /* Miley Cyrus - Plastic Hearts.mp3 in Resources */,
 				15B5623125DE323900D5B871 /* LaunchScreen.storyboard in Resources */,
-				A533385925F66956003B8CB1 /* Madonna - Borderline.mp3 in Resources */,
+				A5842AE22600D4E90059F6E5 /* Dolly Parton - Jolene.mp3 in Resources */,
 				15B5622E25DE323900D5B871 /* Assets.xcassets in Resources */,
-				A533385C25F669B9003B8CB1 /* Dolly Parton - Jolene.mp3 in Resources */,
-				A533385625F66856003B8CB1 /* Placebo - Song to Say Goodbye.mp3 in Resources */,
+				A5842AE52600D4EF0059F6E5 /* David Bowie - Life On Mars.mp3 in Resources */,
+				A5842AE82600D4F40059F6E5 /* Miley Cyrus - Plastic Hearts.mp3 in Resources */,
 				15B5623B25DE403800D5B871 /* Queen.mp3 in Resources */,
+				A5842AEB2600D4F90059F6E5 /* Placebo - Song to Say Goodbye.mp3 in Resources */,
+				A5842AEE2600D4FD0059F6E5 /* Madonna - Borderline.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
