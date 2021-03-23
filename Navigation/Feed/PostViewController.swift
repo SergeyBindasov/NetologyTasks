@@ -14,14 +14,15 @@ class PostViewController: UIViewController {
     
     var post: Post?
     var timer = Timer()
+        
     var timerDisplayed = 0
+    
     
     private lazy var timerLabel: UILabel = {
        let lable = UILabel()
         lable.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         lable.numberOfLines = 2
         lable.textColor = .black
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         return lable
     }()
  
@@ -39,20 +40,15 @@ class PostViewController: UIViewController {
         view.backgroundColor = .cyan
         view.addSubviewWithAutoLayout(timerLabel)
         setupLayout()
-        timerDisplayed = 0
-       
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: .common)
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPreseed))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        timerDisplayed = 0
-        updateTimer()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        timerDisplayed = 0
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        timer.invalidate()
     }
 }
 
