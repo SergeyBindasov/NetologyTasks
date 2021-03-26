@@ -12,7 +12,7 @@ class ProfileFlowCoordinator: Coordinator {
     
     weak var coordinator: MainCoordinator?
     
-    var childCoordinator = [Coordinator]()
+    var childCoordinators = [Coordinator]()
     
     var navigationController: UINavigationController
     

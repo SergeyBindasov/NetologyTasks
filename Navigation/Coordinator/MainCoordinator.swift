@@ -9,7 +9,7 @@
 import UIKit
 
 class MainCoordinator: Coordinator {
-    var childCoordinator = [Coordinator]()
+    var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
     let tabbar = TabBarController()
@@ -31,7 +31,7 @@ class MainCoordinator: Coordinator {
         profileNavigation.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 0)
         let profileFlowCoordinator = ProfileFlowCoordinator(navigationController: profileNavigation)
         
-        childCoordinator = [feedFlowCoordinator, profileFlowCoordinator]
+        childCoordinators = [feedFlowCoordinator, profileFlowCoordinator]
         feedFlowCoordinator.start()
         profileFlowCoordinator.start()
         
