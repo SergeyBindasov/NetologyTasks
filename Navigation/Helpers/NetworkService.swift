@@ -25,11 +25,10 @@ struct NetworkService {
             print("ОТВЕТ \(httpResponse.allHeaderFields)")
             print("СТАТУС КОД РАВЕН \(httpResponse.statusCode)")
             
-            guard error == nil else {
-                print ("WI-FI ВЫКЛЮЧЕН \(error.debugDescription)")
-                return
-            }
-        }.resume()
+            guard error == nil else { return }
+                print (error.debugDescription)
+                
+    }.resume()
     }
 }
 
