@@ -20,11 +20,13 @@ class FeedFlowCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
+    
     func start() {
         let feedVC = FeedViewController()
         feedVC.title = "Feed"
         feedVC.coordinator = self
         navigationController.pushViewController(feedVC, animated: true)
+     
     }
     
     func showPost() {
@@ -38,5 +40,6 @@ class FeedFlowCoordinator: Coordinator {
         let infoVC = InfoViewController.instantiate()
         infoVC.coordinator = self
         navigationController.present(infoVC, animated: true, completion: nil)
-    }    
+    }
+    
 }
