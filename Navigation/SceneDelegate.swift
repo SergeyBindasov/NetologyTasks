@@ -18,8 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController = UINavigationController()
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()
+        network()
+        
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navController
@@ -53,6 +56,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    private func network() {
+      
+        guard let firstUrl = URL(string: URLS.firstUrl) else { return }
+        guard let secondUrl = URL(string: URLS.secondUrl) else { return }
+        guard let thirdUrl = URL(string: URLS.thirdUrl) else { return }
+        
+        NetworkService.dataTask(url: firstUrl) {_ in
+        }
+        NetworkService.dataTask(url: secondUrl) {_ in
+        }
+        NetworkService.dataTask(url: thirdUrl) {_ in
+        }
+    }
+
 
 
 }

@@ -37,7 +37,7 @@ class MainCoordinator: Coordinator {
         profileFlowCoordinator.start()
         
         tabbar.viewControllers = [feedNavigation, profileNavigation]
-        
     }
+    
 }
 
