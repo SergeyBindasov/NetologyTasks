@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StorageService
 
 
 class ProfileViewController: UIViewController {
@@ -51,7 +52,7 @@ extension ProfileViewController: UITableViewDataSource {
         if indexPath.section == 2 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell
-            cell?.content = Content.content[indexPath.row]
+            cell?.content = StorageService.PostContent.Content.content[indexPath.row]
             return cell!
             }
         if indexPath.section == 1 {
@@ -65,7 +66,7 @@ extension ProfileViewController: UITableViewDataSource {
         if section == 1 {
             return 1 }
         if section == 2 {
-            return Content.content.count }
+            return StorageService.PostContent.Content.content.count }
         else {
             return 0 }
 }

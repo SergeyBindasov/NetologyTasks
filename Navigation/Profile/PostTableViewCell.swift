@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
-    var content: PostStruct? {
+    var content: StorageService.PostContent.PostStruct? {
         didSet {
             guard let content = content else { return }
             postAuthor.text = content.author
