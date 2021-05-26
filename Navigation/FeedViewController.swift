@@ -24,6 +24,11 @@ final class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+        view.backgroundColor = .yellow
+        #else
+        view.backgroundColor = .black
+        #endif
         print(type(of: self), #function)
     }
     
