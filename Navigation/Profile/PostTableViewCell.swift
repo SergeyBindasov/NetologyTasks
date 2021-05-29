@@ -11,7 +11,7 @@ import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
-    var content: StorageService.PostContent.PostStruct? {
+    var content: Post? {
         didSet {
             guard let content = content else { return }
             postAuthor.text = content.author
