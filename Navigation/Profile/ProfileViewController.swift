@@ -12,6 +12,19 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
+    let userService: UserService
+    let user: String
+    
+    init(userService: UserService, user: String) {
+        self.userService = userService
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
         
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
@@ -29,6 +42,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         
     }
@@ -75,8 +89,10 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
-        
         let headerView = ProfileTableHederView()
+        headerView.title.text = userService.userName(name: user).name
+        headerView.avatarImageView.image = userService.userName(name: user).avatar
+        headerView.status.text = userService.userName(name: user).status
         return headerView
     }
     
@@ -98,7 +114,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            var newController = PhotosViewController()
+            let newController = PhotosViewController()
             navigationController?.pushViewController(newController, animated: true)
         } else { return }
     }
