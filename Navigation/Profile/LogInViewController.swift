@@ -121,14 +121,14 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        let testUser = TestUserService()
-        let currentUser = CurrentUserService()
+        let userService: UserService
         guard let loginText = loginTF.text else { return }
         #if DEBUG
-        let profileVC = ProfileViewController(userService: testUser, user: loginText)
+       userService = TestUserService()
         #else
-        let profileVC = ProfileViewController(userService: currentUser, user: loginText)
+        userService = CurrentUserService()
         #endif
+        let profileVC = ProfileViewController(userService: userService, userName: loginText)
         navigationController?.pushViewController(profileVC, animated: true)
     }
     

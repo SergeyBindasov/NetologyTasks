@@ -9,5 +9,5 @@
 import Foundation
 
 protocol UserService {
-    func userName(name: String) -> User
+    func userName(by name: String) -> User
 }

@@ -13,11 +13,11 @@ import StorageService
 class ProfileViewController: UIViewController {
     
     let userService: UserService
-    let user: String
+    let userName: String
     
-    init(userService: UserService, user: String) {
+    init(userService: UserService, userName: String) {
         self.userService = userService
-        self.user = user
+        self.userName = userName
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -90,9 +90,10 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
         let headerView = ProfileTableHederView()
-        headerView.title.text = userService.userName(name: user).name
-        headerView.avatarImageView.image = userService.userName(name: user).avatar
-        headerView.status.text = userService.userName(name: user).status
+        let currentUser = userService.userName(by: userName)
+        headerView.title.text = currentUser.name
+        headerView.avatarImageView.image = currentUser.avatar
+        headerView.status.text = currentUser.status
         return headerView
     }
     
