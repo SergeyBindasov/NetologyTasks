@@ -10,6 +10,8 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    var delegate: LoginViewControllerDelegate?
+    
     private lazy var loginView: UIView = {
         let loginView = UIView()
         loginView.backgroundColor = .white
@@ -123,13 +125,19 @@ class LogInViewController: UIViewController {
     @objc private func loginAction (_button: UIButton) {
         let userService: UserService
         guard let loginText = loginTF.text else { return }
+        guard let passwordText = passwordTF.text else { return }
+        
         #if DEBUG
-       userService = TestUserService()
+        userService = TestUserService()
         #else
         userService = CurrentUserService()
         #endif
-        let profileVC = ProfileViewController(userService: userService, userName: loginText)
-        navigationController?.pushViewController(profileVC, animated: true)
+        if delegate?.shouldLoginPasswordChecked(login: loginText, password: passwordText) == true {
+            let profileVC = ProfileViewController(userService: userService, userName: loginText)
+            navigationController?.pushViewController(profileVC, animated: true)
+        } else {
+            print("incorrect login or password")
+        }
     }
     
     @objc private func enterLogin(_ textField: UITextField) {
