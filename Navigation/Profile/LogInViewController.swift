@@ -49,7 +49,7 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-    private lazy var loginTF: UITextField = {
+    public lazy var loginTF: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email or phone"
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -121,8 +121,15 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func loginAction (_button: UIButton) {
-        performSegue(withIdentifier: "toProfilePage", sender: nil)
-        
+        let userService: UserService
+        guard let loginText = loginTF.text else { return }
+        #if DEBUG
+       userService = TestUserService()
+        #else
+        userService = CurrentUserService()
+        #endif
+        let profileVC = ProfileViewController(userService: userService, userName: loginText)
+        navigationController?.pushViewController(profileVC, animated: true)
     }
     
     @objc private func enterLogin(_ textField: UITextField) {

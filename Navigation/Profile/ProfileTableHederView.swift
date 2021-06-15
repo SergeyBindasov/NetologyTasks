@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTableHederView: UIView {
     
-    private lazy var avatarImageView: UIImageView = {
+    public lazy var avatarImageView: UIImageView = {
         let picture = UIImageView()
         picture.image = UIImage(named: "cat")
         picture.layer.borderWidth = 3
@@ -23,17 +23,18 @@ class ProfileTableHederView: UIView {
         return picture
     }()
     
-    private lazy var title: UILabel = {
+    public lazy var title: UILabel = {
         let lable = UILabel()
         lable.text = "Dusty The Cat"
         lable.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         lable.textColor = .black
         lable.textAlignment = .center
+        lable.numberOfLines = 0
         lable.toAutoLayuot()
         return lable
     }()
     
-    private lazy var status: UILabel = {
+    public lazy var status: UILabel = {
         let text = UILabel()
         text.text = "Thinking about smth..."
         text.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -108,6 +109,7 @@ class ProfileTableHederView: UIView {
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             title.topAnchor.constraint(equalTo: topAnchor, constant: 27),
             title.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),
+            title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             status.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 25),
             status.topAnchor.constraint(equalTo: topAnchor, constant: 94),
             status.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
