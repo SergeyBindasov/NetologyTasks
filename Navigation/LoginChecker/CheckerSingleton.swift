@@ -15,4 +15,16 @@ class Checker {
         return singleton
     }()
     
+    private let userName = "00"
+    private let userPassword = "00"
+    
+    private init() {}
+    
+    func checkLoginAndPass(name: String, password: String) -> Bool {
+        if name == userName && password == userPassword {
+            return true
+        } else {
+            return false
+        }
+    }
 }
