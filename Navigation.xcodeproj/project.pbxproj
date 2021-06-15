@@ -26,6 +26,8 @@
 		A56AEE042678F36000F185B8 /* CheckerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AEE032678F36000F185B8 /* CheckerSingleton.swift */; };
 		A56AEE0A2678FC9100F185B8 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AEE092678FC9100F185B8 /* LoginViewControllerDelegate.swift */; };
 		A56AEE0D2679005E00F185B8 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AEE0C2679005E00F185B8 /* LoginInspector.swift */; };
+		A56AEE1026790B2300F185B8 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AEE0F26790B2300F185B8 /* LoginFactory.swift */; };
+		A56AEE1326790B8E00F185B8 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AEE1226790B8E00F185B8 /* MyLoginFactory.swift */; };
 		A57A6C22254C35440082E840 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57A6C21254C35440082E840 /* PhotosTableViewCell.swift */; };
 		A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D01ED2537870E00EA3C75 /* LogInViewController.swift */; };
 		A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */; };
@@ -81,6 +83,8 @@
 		A56AEE032678F36000F185B8 /* CheckerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerSingleton.swift; sourceTree = "<group>"; };
 		A56AEE092678FC9100F185B8 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A56AEE0C2679005E00F185B8 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		A56AEE0F26790B2300F185B8 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		A56AEE1226790B8E00F185B8 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		A57A6C21254C35440082E840 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		A59D01ED2537870E00EA3C75 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				A56AEE032678F36000F185B8 /* CheckerSingleton.swift */,
 				A56AEE092678FC9100F185B8 /* LoginViewControllerDelegate.swift */,
 				A56AEE0C2679005E00F185B8 /* LoginInspector.swift */,
+				A56AEE0F26790B2300F185B8 /* LoginFactory.swift */,
+				A56AEE1226790B8E00F185B8 /* MyLoginFactory.swift */,
 			);
 			path = LoginChecker;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				A56AEE042678F36000F185B8 /* CheckerSingleton.swift in Sources */,
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */,
+				A56AEE1326790B8E00F185B8 /* MyLoginFactory.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				A56AEE0D2679005E00F185B8 /* LoginInspector.swift in Sources */,
 				A514564A2538353B00396F4B /* Alpha.swift in Sources */,
@@ -326,6 +333,7 @@
 				A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */,
 				A57A6C22254C35440082E840 /* PhotosTableViewCell.swift in Sources */,
 				A55029612528D2F80082EDE2 /* ProfileViewController.swift in Sources */,
+				A56AEE1026790B2300F185B8 /* LoginFactory.swift in Sources */,
 				A555F4372665148D004CB9B4 /* UserService.swift in Sources */,
 				A5AF7135254F0531008231D1 /* PhotosCollectionViewCell.swift in Sources */,
 				A56AEE0A2678FC9100F185B8 /* LoginViewControllerDelegate.swift in Sources */,
