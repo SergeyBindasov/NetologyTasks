@@ -11,11 +11,11 @@ import StorageService
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    var gallery: Pic? {
+    var gallery: UIImage? {
         didSet {
             guard let gallery = gallery else {
                 return }
-            picture.image = gallery.image
+            picture.image = gallery
         }
         
     }
