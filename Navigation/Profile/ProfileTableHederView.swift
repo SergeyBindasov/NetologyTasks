@@ -60,8 +60,8 @@ class ProfileTableHederView: UIView {
         return textField
     }()
     
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var button: CustomButton = {
+        let button = CustomButton(onTap: self.buttonPressed, setTitle: "Set status", titleColor: .white)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 10
         button.layer.backgroundColor = UIColor.systemBlue.cgColor
@@ -71,7 +71,6 @@ class ProfileTableHederView: UIView {
         button.layer.shadowOpacity = 0.7
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.toAutoLayuot()
         return button
     } ()
@@ -94,10 +93,16 @@ class ProfileTableHederView: UIView {
     
     @objc private func setStatus(_ textField: UITextField) {
         status.text = textField.text
+        
     }
     
-    @objc private func buttonPressed() {
+    func buttonPressed() {
     setStatusTextField.text = status.text ?? "Нет статуса"
+        button.backgroundColor = .orange
+        setStatusTextField.resignFirstResponder()
+        
+        
+     
     }
     
     private func setupHeader() {
@@ -127,3 +132,4 @@ class ProfileTableHederView: UIView {
         NSLayoutConstraint.activate(constraints)
     }
 }
+

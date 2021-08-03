@@ -36,9 +36,10 @@ class LogInViewController: UIViewController {
         return logo
     }()
     
-    private lazy var loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+    private lazy var loginButton: CustomButton = {
+        let button = CustomButton(onTap: self.loginAction
+        , setTitle: "Login", titleColor: .white)
+        button.setTitle("Login", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
@@ -46,7 +47,6 @@ class LogInViewController: UIViewController {
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .selected)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .highlighted)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .disabled)
-        button.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         button.toAutoLayuot()
         return button
     }()
@@ -122,7 +122,8 @@ class LogInViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets = .zero
     }
     
-    @objc private func loginAction (_button: UIButton) {
+    func loginAction () {
+        
         let userService: UserService
         guard let loginText = loginTF.text else { return }
         guard let passwordText = passwordTF.text else { return }
