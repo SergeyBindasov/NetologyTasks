@@ -20,8 +20,11 @@
 		A530A360265E5D53001768E3 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A530A358265E5D53001768E3 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A530A368265E6015001768E3 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530A367265E6015001768E3 /* Storage.swift */; };
 		A53818BC26986AFD00BCC3AA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53818BB26986AFD00BCC3AA /* CustomButton.swift */; };
+		A53B4EE026BB148000582D3E /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53B4EDF26BB148000582D3E /* CustomTextfield.swift */; };
 		A545C94D2679F07100C08CAF /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = A545C94C2679F07100C08CAF /* iOSIntPackage */; };
 		A55029612528D2F80082EDE2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55029602528D2F80082EDE2 /* ProfileViewController.swift */; };
+		A555A99F26B991AD00C44E20 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555A99E26B991AD00C44E20 /* Help.swift */; };
+		A555A9A326B99D8900C44E20 /* FeedChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555A9A226B99D8900C44E20 /* FeedChecker.swift */; };
 		A555F4342665125A004CB9B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555F4332665125A004CB9B4 /* User.swift */; };
 		A555F4372665148D004CB9B4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555F4362665148D004CB9B4 /* UserService.swift */; };
 		A555F43A2665150D004CB9B4 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555F4392665150D004CB9B4 /* CurrentUserService.swift */; };
@@ -79,7 +82,10 @@
 		A530A35B265E5D53001768E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A530A367265E6015001768E3 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A53818BB26986AFD00BCC3AA /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		A53B4EDF26BB148000582D3E /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		A55029602528D2F80082EDE2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A555A99E26B991AD00C44E20 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
+		A555A9A226B99D8900C44E20 /* FeedChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedChecker.swift; sourceTree = "<group>"; };
 		A555F4332665125A004CB9B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A555F4362665148D004CB9B4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A555F4392665150D004CB9B4 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
@@ -144,12 +150,14 @@
 				A56AEE002678EEFF00F185B8 /* Feed */,
 				A51456492538353B00396F4B /* Alpha.swift */,
 				A53818BB26986AFD00BCC3AA /* CustomButton.swift */,
+				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				A51F824B2539D3EF002C1A63 /* Assets.xcassets */,
 				060782B7250CE27700A87020 /* Main.storyboard */,
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
+				A555A99E26B991AD00C44E20 /* Help.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
+				A555A9A226B99D8900C44E20 /* FeedChecker.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -270,7 +279,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Artem Novichkov";
 				TargetAttributes = {
 					060782AD250CE27700A87020 = {
@@ -342,6 +351,7 @@
 				A555F4342665125A004CB9B4 /* User.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,
 				A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */,
+				A555A9A326B99D8900C44E20 /* FeedChecker.swift in Sources */,
 				A57A6C22254C35440082E840 /* PhotosTableViewCell.swift in Sources */,
 				A55029612528D2F80082EDE2 /* ProfileViewController.swift in Sources */,
 				A56AEE1026790B2300F185B8 /* LoginFactory.swift in Sources */,
@@ -351,6 +361,8 @@
 				A56AEE0A2678FC9100F185B8 /* LoginViewControllerDelegate.swift in Sources */,
 				060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */,
 				A5B3C9332549A5C300499FF8 /* PostTableViewCell.swift in Sources */,
+				A53B4EE026BB148000582D3E /* CustomTextfield.swift in Sources */,
+				A555A99F26B991AD00C44E20 /* Help.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +431,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -479,6 +492,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
