@@ -10,7 +10,6 @@ import Foundation
 
 final class FeedChecker {
     
-    //var check: Bool?
     
     let password: String = "12345"
     
@@ -22,7 +21,4 @@ final class FeedChecker {
         }
     }
     
-//    init(check: Bool?) {
-//        self.check = check
-//    }
 }

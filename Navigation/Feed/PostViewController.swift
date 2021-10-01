@@ -10,9 +10,19 @@ import UIKit
 
 class PostViewController: UIViewController {
     
+    weak var coordinator: FeedFlowCoordinator?
+    
+    
+    @objc func addButtonPreseed() {
+        coordinator?.showInfo()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        view.backgroundColor = .yellow
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPreseed))
     }
+    
 }

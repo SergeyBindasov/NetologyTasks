@@ -12,6 +12,8 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
+    weak var coordinator: ProfileFlowCoordinator?
+    
     let userService: UserService
     let userName: String
     
@@ -25,7 +27,6 @@ class ProfileViewController: UIViewController {
         fatalError()
     }
     
-        
     private lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
         tv.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
@@ -115,8 +116,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let newController = PhotosViewController()
-            navigationController?.pushViewController(newController, animated: true)
+            coordinator?.showGallery()
         } else { return }
     }
 }

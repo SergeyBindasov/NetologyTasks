@@ -10,6 +10,8 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
+    weak var coordinator: FeedFlowCoordinator?
+    
     private var text: String = ""
     
     private var feedChecker: FeedChecker
@@ -61,6 +63,7 @@ final class FeedViewController: UIViewController {
         } else {
             round.backgroundColor = .red
         }
+        coordinator?.showPost()
     }
     
     

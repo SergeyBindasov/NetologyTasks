@@ -11,6 +11,8 @@ import StorageService
 import iOSIntPackage
 
 class PhotosViewController: UIViewController, ImageLibrarySubscriber {
+    
+    weak var coordinator: ProfileFlowCoordinator?
   
     var imageArray: [UIImage] = []
     

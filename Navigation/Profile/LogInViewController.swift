@@ -12,6 +12,8 @@ class LogInViewController: UIViewController {
     
     var delegate: LoginViewControllerDelegate?
     
+    weak var coordinator: ProfileFlowCoordinator?
+    
     private lazy var loginView: UIView = {
         let loginView = UIView()
         loginView.backgroundColor = .white
@@ -24,6 +26,7 @@ class LogInViewController: UIViewController {
         scrollView.toAutoLayuot()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
+        scrollView.backgroundColor = .white
         return scrollView
         
     }()
@@ -134,8 +137,7 @@ class LogInViewController: UIViewController {
         userService = CurrentUserService()
         #endif
         if delegate?.shouldLoginPasswordChecked(login: loginText, password: passwordText) == true {
-            let profileVC = ProfileViewController(userService: userService, userName: loginText)
-            navigationController?.pushViewController(profileVC, animated: true)
+            coordinator?.loginAction(userService: userService, userName: loginText)
         } else {
             print("incorrect login or password")
         }
@@ -159,10 +161,10 @@ class LogInViewController: UIViewController {
         loginView.addSubview(stackViewTF)
         
         let constraints = [
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             loginView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             loginView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
