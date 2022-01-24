@@ -152,20 +152,18 @@
 		060782B0250CE27700A87020 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				A5433DF226BD60D300E1F731 /* Help */,
+				A5433DF126BD60BA00E1F731 /* Models */,
 				A5823A1026BBE91900336E6F /* Navigation */,
 				A56AEE022678F33400F185B8 /* LoginChecker */,
 				A56AEDFE2678EE9000F185B8 /* Users */,
 				A550295D2528D2740082EDE2 /* Profile */,
 				A56AEE002678EEFF00F185B8 /* Feed */,
-				A51456492538353B00396F4B /* Alpha.swift */,
-				A53818BB26986AFD00BCC3AA /* CustomButton.swift */,
-				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
 				060782B3250CE27700A87020 /* SceneDelegate.swift */,
 				060782B1250CE27700A87020 /* AppDelegate.swift */,
 				A51F824B2539D3EF002C1A63 /* Assets.xcassets */,
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
-				A555A99E26B991AD00C44E20 /* Help.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -178,6 +176,24 @@
 				A530A367265E6015001768E3 /* Storage.swift */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		A5433DF126BD60BA00E1F731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A53818BB26986AFD00BCC3AA /* CustomButton.swift */,
+				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5433DF226BD60D300E1F731 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				A51456492538353B00396F4B /* Alpha.swift */,
+				A555A99E26B991AD00C44E20 /* Help.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		A550295D2528D2740082EDE2 /* Profile */ = {
