@@ -29,20 +29,3 @@ struct NetworkManager {
         }
     }
 }
-
-enum AppConfiguration: Equatable {
-    case firstCase(first: String)
-    case secondCase(second: String)
-    case thirdCase(third: String)
-    
-    var urlString: String {
-        switch self {
-        case .firstCase(let first):
-            return first
-        case .secondCase(let second):
-            return second
-        case .thirdCase(let third):
-            return third
-        }
-    }
-}
