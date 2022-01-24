@@ -38,6 +38,7 @@
 		A5823A1326BBE9F700336E6F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1226BBE9F700336E6F /* MainCoordinator.swift */; };
 		A5823A1626BBEA9C00336E6F /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1526BBEA9C00336E6F /* CoordinatorProtocol.swift */; };
 		A5823A1A26BC0D0500336E6F /* FeedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1926BC0D0500336E6F /* FeedFlowCoordinator.swift */; };
+		A5977A6D279E94CE007A64B1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5977A6C279E94CE007A64B1 /* NetworkManager.swift */; };
 		A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D01ED2537870E00EA3C75 /* LogInViewController.swift */; };
 		A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */; };
 		A5AF7135254F0531008231D1 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF7134254F0531008231D1 /* PhotosCollectionViewCell.swift */; };
@@ -103,6 +104,7 @@
 		A5823A1226BBE9F700336E6F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		A5823A1526BBEA9C00336E6F /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		A5823A1926BC0D0500336E6F /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
+		A5977A6C279E94CE007A64B1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A59D01ED2537870E00EA3C75 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		A5AF7134254F0531008231D1 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				A53818BB26986AFD00BCC3AA /* CustomButton.swift */,
 				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
+				A5977A6C279E94CE007A64B1 /* NetworkManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */,
 				A5823A1626BBEA9C00336E6F /* CoordinatorProtocol.swift in Sources */,
 				A555A9A326B99D8900C44E20 /* FeedChecker.swift in Sources */,
+				A5977A6D279E94CE007A64B1 /* NetworkManager.swift in Sources */,
 				A57A6C22254C35440082E840 /* PhotosTableViewCell.swift in Sources */,
 				A55029612528D2F80082EDE2 /* ProfileViewController.swift in Sources */,
 				A56AEE1026790B2300F185B8 /* LoginFactory.swift in Sources */,
