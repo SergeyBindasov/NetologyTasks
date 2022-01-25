@@ -12,4 +12,7 @@ protocol QuoteDelegate {
     func updateQuote(networManagwer: NetworkManager, dataModel: Item)
     
     func updatePlanet(networManagwer: NetworkManager, dataModel: PlanetModel)
+    
+    
+    func()
 }
