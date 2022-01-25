@@ -39,6 +39,7 @@
 		A5823A1326BBE9F700336E6F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1226BBE9F700336E6F /* MainCoordinator.swift */; };
 		A5823A1626BBEA9C00336E6F /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1526BBEA9C00336E6F /* CoordinatorProtocol.swift */; };
 		A5823A1A26BC0D0500336E6F /* FeedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5823A1926BC0D0500336E6F /* FeedFlowCoordinator.swift */; };
+		A588161927A038D700F8833D /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588161827A038D700F8833D /* PlanetModel.swift */; };
 		A5977A6D279E94CE007A64B1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5977A6C279E94CE007A64B1 /* NetworkManager.swift */; };
 		A5977A6F279EB9B6007A64B1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5977A6E279EB9B6007A64B1 /* DataModel.swift */; };
 		A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D01ED2537870E00EA3C75 /* LogInViewController.swift */; };
@@ -107,6 +108,7 @@
 		A5823A1226BBE9F700336E6F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		A5823A1526BBEA9C00336E6F /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		A5823A1926BC0D0500336E6F /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
+		A588161827A038D700F8833D /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		A5977A6C279E94CE007A64B1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5977A6E279EB9B6007A64B1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A59D01ED2537870E00EA3C75 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
 				A5977A6C279E94CE007A64B1 /* NetworkManager.swift */,
 				A5977A6E279EB9B6007A64B1 /* DataModel.swift */,
+				A588161827A038D700F8833D /* PlanetModel.swift */,
 				A50EF4BD279EE71F008A87B9 /* QuoteDelegate.swift */,
 			);
 			path = Models;
@@ -407,6 +410,7 @@
 				A56AEE1026790B2300F185B8 /* LoginFactory.swift in Sources */,
 				A555F4372665148D004CB9B4 /* UserService.swift in Sources */,
 				A5AF7135254F0531008231D1 /* PhotosCollectionViewCell.swift in Sources */,
+				A588161927A038D700F8833D /* PlanetModel.swift in Sources */,
 				A53818BC26986AFD00BCC3AA /* CustomButton.swift in Sources */,
 				A56AEE0A2678FC9100F185B8 /* LoginViewControllerDelegate.swift in Sources */,
 				060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */,
