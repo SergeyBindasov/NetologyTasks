@@ -124,6 +124,9 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func registerTapped(sender:UITapGestureRecognizer) {
+       // let register = RegisterViewController()
+        //navigationController.pu
+        coordinator?.register()
         registerLabel.textColor = .opaqueSeparator
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.registerLabel.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)

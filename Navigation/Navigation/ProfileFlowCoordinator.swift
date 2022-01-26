@@ -44,4 +44,10 @@ class ProfileFlowCoordinator: Coordinator {
         navigationController.pushViewController(galleryVC, animated: true)
     }
     
+    func register() {
+        let registerVC = RegisterViewController()
+        registerVC.coordinator = self
+        navigationController.present(registerVC, animated: true, completion: nil)
+    }
+    
 }
