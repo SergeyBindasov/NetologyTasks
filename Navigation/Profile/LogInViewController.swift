@@ -17,13 +17,11 @@ class LogInViewController: UIViewController {
     private lazy var loginView: UIView = {
         let loginView = UIView()
         loginView.backgroundColor = .white
-        loginView.toAutoLayuot()
         return loginView
     }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.toAutoLayuot()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.delegate = self
         scrollView.backgroundColor = .white
@@ -35,7 +33,6 @@ class LogInViewController: UIViewController {
         let logo = UIImageView()
         logo.image = UIImage(named: "vklogo")
         logo.contentMode = .scaleAspectFit
-        logo.toAutoLayuot()
         return logo
     }()
     
@@ -50,7 +47,6 @@ class LogInViewController: UIViewController {
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .selected)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .highlighted)
         button.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel").alpha(0.8), for: .disabled)
-        button.toAutoLayuot()
         return button
     }()
     
@@ -68,7 +64,6 @@ class LogInViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.addTarget(self, action: #selector(enterLogin(_ :)), for: .editingChanged)
-        textField.toAutoLayuot()
         return textField
     }()
     
@@ -85,7 +80,6 @@ class LogInViewController: UIViewController {
         secondTextField.autocapitalizationType = .none
         secondTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: secondTextField.frame.height))
         secondTextField.leftViewMode = .always
-        secondTextField.toAutoLayuot()
         secondTextField.addTarget(self, action: #selector(enterPassword(_ :)), for: .editingChanged)
         return secondTextField
     }()
@@ -96,20 +90,45 @@ class LogInViewController: UIViewController {
         newView.distribution = UIStackView.Distribution.fillProportionally
         newView.alignment = .fill
         newView.spacing = 00
-        newView.toAutoLayuot()
         return newView
+    }()
+    
+    private lazy var lineLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Все еще нет аккаунта?"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        return label
+    }()
+    
+    private lazy var registerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Зарегистрируйся!"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-       
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(registerTapped))
+        registerLabel.addGestureRecognizer(tap)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+    }
+    
+    @objc private func registerTapped(sender:UITapGestureRecognizer) {
+        registerLabel.textColor = .opaqueSeparator
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.registerLabel.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+   }
+        print("РАБОТАЕТ!!")
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -154,11 +173,10 @@ class LogInViewController: UIViewController {
     // MARK: setupLayout
     
     private func setupLayout() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(loginView)
-        loginView.addSubview(vkLogo)
-        loginView.addSubview(loginButton)
-        loginView.addSubview(stackViewTF)
+        view.addSubviews(scrollView)
+        scrollView.addSubviews(loginView)
+        loginView.addSubviews(vkLogo, loginButton, lineLabel, stackViewTF, registerLabel)
+
         
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -185,14 +203,16 @@ class LogInViewController: UIViewController {
             loginButton.topAnchor.constraint(equalTo: stackViewTF.bottomAnchor, constant: 16),
             loginButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 16),
             loginButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -16),
-            loginButton.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -135)
+            loginButton.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -135),
+            lineLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 16),
+            //lineLabel.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -180)
+            lineLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 36),
+            registerLabel.leadingAnchor.constraint(equalTo: lineLabel.trailingAnchor, constant: 4),
+            registerLabel.centerYAnchor.constraint(equalTo: lineLabel.centerYAnchor),
+            registerLabel.trailingAnchor.constraint(lessThanOrEqualTo: loginView.trailingAnchor, constant: -16)
+            
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-}
-extension UIView {
-    func toAutoLayuot() {
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

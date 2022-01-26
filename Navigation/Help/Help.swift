@@ -19,5 +19,9 @@ extension UIView {
             self.addSubview($0)
         }
     }
+    
+    func toAutoLayuot() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 
