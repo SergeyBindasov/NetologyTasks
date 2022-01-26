@@ -37,8 +37,7 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var loginButton: CustomButton = {
-        let button = CustomButton(onTap: self.loginAction
-        , setTitle: "Login", titleColor: .white)
+        let button = CustomButton(onTap: self.loginAction)
         button.setTitle("Login", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
@@ -124,12 +123,12 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func registerTapped(sender:UITapGestureRecognizer) {
-       // let register = RegisterViewController()
-        //navigationController.pu
-        coordinator?.register()
+       
+       
         registerLabel.textColor = .opaqueSeparator
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.registerLabel.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+            self.coordinator?.register()
    }
         print("РАБОТАЕТ!!")
     }
@@ -208,7 +207,6 @@ class LogInViewController: UIViewController {
             loginButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -16),
             loginButton.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -135),
             lineLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: 16),
-            //lineLabel.bottomAnchor.constraint(equalTo: loginView.bottomAnchor, constant: -180)
             lineLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 36),
             registerLabel.leadingAnchor.constraint(equalTo: lineLabel.trailingAnchor, constant: 4),
             registerLabel.centerYAnchor.constraint(equalTo: lineLabel.centerYAnchor),

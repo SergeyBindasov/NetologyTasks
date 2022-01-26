@@ -7,6 +7,9 @@ target 'Navigation' do
 
   # Pods for Navigation
 pod 'Firebase/Auth'
+pod 'SnapKit', '~> 5.0.0'
+pod 'IQKeyboardManagerSwift'
+
 end
 
 target 'StorageService' do

@@ -7,14 +7,130 @@
 //
 
 import UIKit
+import SnapKit
 import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
     weak var coordinator: ProfileFlowCoordinator?
     
+    private lazy var registerView: UIView = {
+        let registerView = UIView()
+        registerView.backgroundColor = .white
+        return registerView
+    }()
+    
+    private lazy var logo: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "vkfulllogo")
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    public lazy var loginTF: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 10
+        textField.backgroundColor = .systemGray6
+        textField.textColor = .black
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        textField.tintColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+        textField.autocapitalizationType = .none
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.addTarget(self, action: #selector(enterLogin(_ :)), for: .editingChanged)
+        return textField
+    }()
+    
+    private lazy var passwordTF: UITextField = {
+        let secondTextField = UITextField()
+        secondTextField.placeholder = "Password"
+        secondTextField.layer.borderColor = UIColor.lightGray.cgColor
+        secondTextField.layer.borderWidth = 0.5
+        secondTextField.layer.cornerRadius = 10
+        secondTextField.backgroundColor = .systemGray6
+        secondTextField.textColor = .black
+        secondTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        secondTextField.textContentType = .oneTimeCode
+        secondTextField.isSecureTextEntry = true
+        secondTextField.autocapitalizationType = .none
+        secondTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: secondTextField.frame.height))
+        secondTextField.leftViewMode = .always
+        secondTextField.addTarget(self, action: #selector(enterPassword(_ :)), for: .editingChanged)
+        return secondTextField
+    }()
+    
+    private lazy var stackViewTF: UIStackView = {
+        let newView = UIStackView(arrangedSubviews: [loginTF, passwordTF])
+        newView.axis = NSLayoutConstraint.Axis.vertical
+        newView.distribution = UIStackView.Distribution.fillProportionally
+        newView.alignment = .fill
+        newView.spacing = 00
+        return newView
+    }()
+    
+    private lazy var registerButton: CustomButton = {
+        let button = CustomButton(onTap: self.registerAction)
+        button.setTitle("Зарегистрироватвь", for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 10
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+        return button
+    }()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
+        view.backgroundColor = .white
+        setupLayout()
+        
     }
+}
+
+extension RegisterViewController {
+    func setupLayout() {
+        view.addSubviews(registerView)
+        registerView.addSubviews(logo, stackViewTF, registerButton)
+        
+        registerView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        
+        logo.snp.makeConstraints { make in
+            make.leading.equalTo(registerView).offset(16)
+            make.trailing.equalTo(registerView).offset(-16)
+            make.center.equalTo(registerView.snp.center)
+            make.height.lessThanOrEqualTo(60)
+        }
+                
+        stackViewTF.snp.makeConstraints { make in
+            make.top.equalTo(logo.snp.bottom).offset(48)
+            make.leading.equalTo(registerView).offset(16)
+            make.trailing.equalTo(registerView).offset(-16)
+            make.height.equalTo(100)
+        }
+        
+        registerButton.snp.makeConstraints { make in
+            make.leading.equalTo(registerView).offset(16)
+            make.trailing.equalTo(registerView).offset(-16)
+            make.bottom.equalTo(registerView.snp.bottom).offset(-135)
+            make.height.equalTo(50)
+        }
+    }
+    
+    func registerAction () {
+        
+    }
+    
+    
+    @objc private func enterLogin(_ textField: UITextField) {
+    }
+    
+    @objc private func enterPassword(_ textField: UITextField) {
+    }
+    
+   
 }
