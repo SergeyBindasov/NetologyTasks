@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import FirebaseAuth
+import Firebase
 
 class RegisterViewController: UIViewController {
     
@@ -53,9 +53,7 @@ class RegisterViewController: UIViewController {
         secondTextField.backgroundColor = .systemGray6
         secondTextField.textColor = .black
         secondTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        secondTextField.textContentType = .oneTimeCode
-        secondTextField.isSecureTextEntry = true
-        secondTextField.autocapitalizationType = .none
+        secondTextField.isSecureTextEntry = false
         secondTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: secondTextField.frame.height))
         secondTextField.leftViewMode = .always
         secondTextField.addTarget(self, action: #selector(enterPassword(_ :)), for: .editingChanged)
@@ -122,14 +120,36 @@ extension RegisterViewController {
     }
     
     func registerAction () {
-        
+        if let email = loginTF.text, let password = passwordTF.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let errorExists = error {
+                    let alert = UIAlertController(title: "Что-то пошло не так", message: errorExists.localizedDescription, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Понятно", style: .cancel) { action in
+                        self.loginTF.text = ""
+                        self.passwordTF.text = ""
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Поздравляем!", message: "Регистрация прошла успешно", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ок", style: .cancel) { action in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
-    
     @objc private func enterLogin(_ textField: UITextField) {
+       
     }
     
     @objc private func enterPassword(_ textField: UITextField) {
+        //Стимулятор выдает предупрежение  - [AutoFill] Cannot show Automatic Strong Passwords for app bundleID: due to error: iCloud Keychain is disabled. Поэтому скрытй пароль отключил.
+        //passwordTF.isSecureTextEntry = true
+        
     }
     
    
