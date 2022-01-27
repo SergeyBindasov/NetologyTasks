@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LogInViewController: UIViewController {
     
@@ -157,10 +158,17 @@ class LogInViewController: UIViewController {
         #else
         userService = CurrentUserService()
         #endif
-        if delegate?.shouldLoginPasswordChecked(login: loginText, password: passwordText) == true {
-            coordinator?.loginAction(userService: userService, userName: loginText)
-        } else {
-            print("incorrect login or password")
+        
+        Auth.auth().signIn(withEmail: loginText, password: passwordText) { result, error in
+            if let exsistingError = error {
+                let alert = UIAlertController(title: "Что-то пошло не так", message: exsistingError.localizedDescription, preferredStyle: .alert)
+                let action = UIAlertAction(title: "Оk", style: .cancel) { action in
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.coordinator?.loginAction(userService: userService, userName: loginText)
+            }
         }
     }
     
@@ -169,7 +177,6 @@ class LogInViewController: UIViewController {
     
     @objc private func enterPassword(_ textField: UITextField) {
     }
-    
     
     
     // MARK: setupLayout
