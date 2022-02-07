@@ -9,8 +9,11 @@
 import UIKit
 import SnapKit
 import Firebase
+import RealmSwift
 
 class RegisterViewController: UIViewController {
+    
+    let realm = try! Realm()
     
     weak var coordinator: ProfileFlowCoordinator?
     
