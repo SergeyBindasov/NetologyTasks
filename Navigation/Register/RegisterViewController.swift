@@ -74,7 +74,7 @@ class RegisterViewController: UIViewController {
     
     private lazy var registerButton: CustomButton = {
         let button = CustomButton(onTap: self.registerAction)
-        button.setTitle("Зарегистрироватвь", for: .normal)
+        button.setTitle("Зарегистрировать", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
@@ -87,6 +87,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        
         
     }
 }
