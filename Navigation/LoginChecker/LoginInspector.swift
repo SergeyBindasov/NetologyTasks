@@ -8,10 +8,10 @@
 
 import Foundation
 
+
 final class LoginInspector: LoginViewControllerDelegate {
-    
+     
     func shouldLoginPasswordChecked(login: String, password: String) -> Bool {
         return Checker.shared.checkLoginAndPass(name: login, password: password)
-
-}
+    }
 }

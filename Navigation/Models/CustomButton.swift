@@ -12,15 +12,9 @@ import UIKit
 final class CustomButton: UIButton {
     
     var onTap: (() -> Void)?
-   
-    var setTitle: String
     
-    var titleColor: UIColor?
-    
-    init(onTap:  (() -> Void)?, setTitle: String, titleColor: UIColor?) {
+    init(onTap:  (() -> Void)?) {
         self.onTap = onTap
-        self.setTitle = setTitle
-        self.titleColor = titleColor
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(tapped), for: .touchUpInside)

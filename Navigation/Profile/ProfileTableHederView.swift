@@ -61,7 +61,7 @@ class ProfileTableHederView: UIView {
     }()
     
     private lazy var button: CustomButton = {
-        let button = CustomButton(onTap: self.buttonPressed, setTitle: "Set status", titleColor: .white)
+        let button = CustomButton(onTap: self.buttonPressed)
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 10
         button.layer.backgroundColor = UIColor.systemBlue.cgColor

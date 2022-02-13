@@ -44,7 +44,7 @@ final class FeedViewController: UIViewController {
     }()
     
     private lazy var button: CustomButton = {
-        let button = CustomButton(onTap: self.checkTextfield, setTitle: "Check!", titleColor: .white)
+        let button = CustomButton(onTap: self.checkTextfield)
         button.setTitle("Check!", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
