@@ -8,10 +8,15 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 class LogInViewController: UIViewController {
     
     var delegate: LoginViewControllerDelegate?
+    
+    let realm = try! Realm()
+    
+    var userIdentification: Results<AuthorizationModel>?
     
     weak var coordinator: ProfileFlowCoordinator?
     
@@ -112,6 +117,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        checkAuthorization()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(registerTapped))
         registerLabel.addGestureRecognizer(tap)
@@ -131,7 +137,6 @@ class LogInViewController: UIViewController {
             self.registerLabel.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
             self.coordinator?.register()
    }
-        print("РАБОТАЕТ!!")
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -149,15 +154,16 @@ class LogInViewController: UIViewController {
     
     func loginAction () {
         
-        let userService: UserService
-        guard let loginText = loginTF.text else { return }
-        guard let passwordText = passwordTF.text else { return }
+        var userService: UserService
         
         #if DEBUG
         userService = TestUserService()
         #else
         userService = CurrentUserService()
         #endif
+        
+        guard let loginText = loginTF.text else { return }
+        guard let passwordText = passwordTF.text else { return }
         
         Auth.auth().signIn(withEmail: loginText, password: passwordText) { result, error in
             if let exsistingError = error {
@@ -169,6 +175,15 @@ class LogInViewController: UIViewController {
             } else {
                 self.coordinator?.loginAction(userService: userService, userName: loginText)
             }
+        }
+    }
+    
+    func checkAuthorization() {
+        userIdentification = realm.objects(AuthorizationModel.self)
+        guard let user = userIdentification else { return }
+        if let lastUser = user.last {
+            loginTF.text = lastUser.userLogin
+            passwordTF.text = lastUser.userPassword
         }
     }
     
