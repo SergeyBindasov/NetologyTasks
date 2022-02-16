@@ -34,7 +34,6 @@ class PostDataModel {
     func savePost() {
         do {
             try context.save()
-            print("успех")
         } catch {
             print("Ошибка с сохранением поста \(error.localizedDescription)")
         }

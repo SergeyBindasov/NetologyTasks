@@ -43,14 +43,20 @@ class ProfileViewController: UIViewController {
         return tv
     }()
     
-       
+    private lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 2
+        tap.addTarget(self, action: #selector(tapDone(sender:)))
+        return tap
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
+        tableView.addGestureRecognizer(tap)
     }
     
     private func setupLayout() {
@@ -64,6 +70,15 @@ class ProfileViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    
+    @objc func tapDone(sender: UITapGestureRecognizer) {
+        let touchPoint = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+            if indexPath.section == 2 {
+                postDataModel.createNewPost(path: indexPath.row)
+            }
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
@@ -74,14 +89,14 @@ extension ProfileViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell
             cell?.content = Storage.Content.content[indexPath.row]
             return cell!
-            }
+        }
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotosTableViewCell.self), for: indexPath) as? PhotosTableViewCell
             return cell!
         }
-    return UITableViewCell()
-}
-        
+        return UITableViewCell()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             return 1 }
@@ -89,7 +104,7 @@ extension ProfileViewController: UITableViewDataSource {
             return Storage.Content.content.count }
         else {
             return 0 }
-}
+    }
 }
 
 extension ProfileViewController: UITableViewDelegate {
@@ -123,8 +138,6 @@ extension ProfileViewController: UITableViewDelegate {
         if indexPath.section == 1 {
             coordinator?.showGallery()
         } else {
-            postDataModel.createNewPost(path: indexPath.row)
         }
-            
     }
 }
