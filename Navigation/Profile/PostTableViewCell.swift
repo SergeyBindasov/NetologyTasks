@@ -22,6 +22,17 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     
+    var savedContent: SavedPost? {
+        didSet {
+            guard let savedContent = savedContent else { return }
+            postAuthor.text = savedContent.author
+            postImageView.image = UIImage(data: savedContent.image!)
+            postDescription.text = savedContent.postDescription
+            postLikes.text = String("Likes: \(savedContent.likes)")
+            postViews.text = String("Views: \(savedContent.views)")
+    }
+    }
+    
     private var postAuthor: UILabel = {
         let text = UILabel()
         text.font = UIFont.systemFont(ofSize: 20, weight: .bold)

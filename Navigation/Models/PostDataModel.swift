@@ -12,7 +12,8 @@ import StorageService
 import UIKit
 
 class PostDataModel {
-    var arrayOfPosts = [SavedPost]()
+    
+    var arrayOfPosts: [SavedPost] = []
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -26,6 +27,7 @@ class PostDataModel {
         }
         newPost.likes = Int32(Storage.Content.content[path].likes)
         newPost.views = Int32(Storage.Content.content[path].views)
+        arrayOfPosts.append(newPost)
         savePost()
     }
     
@@ -37,4 +39,14 @@ class PostDataModel {
             print("Ошибка с сохранением поста \(error.localizedDescription)")
         }
     }
+    
+    func loadPosts() -> [SavedPost] {
+        let request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()
+        do {
+        arrayOfPosts = try context.fetch(request)
+        } catch {
+            ("Ошибка с загрузкой постов \(error.localizedDescription)")
+        }
+        return arrayOfPosts
+}
 }

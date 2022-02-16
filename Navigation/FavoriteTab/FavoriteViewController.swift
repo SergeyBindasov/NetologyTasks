@@ -8,13 +8,16 @@
 
 import UIKit
 import SnapKit
-import StorageService
 
 class FavoriteViewController: UIViewController {
     
     weak var coordinator: FavoriteFlowCoordinator?
     
-    var favoritePost = [SavedPost]()
+    let dataModel = PostDataModel()
+    
+    var favoritePost: [SavedPost] {
+        return dataModel.loadPosts()
+    }
     
     private lazy var favTavleView: UITableView = {
         let tableView = UITableView()
@@ -29,6 +32,11 @@ class FavoriteViewController: UIViewController {
         view.backgroundColor = .white
         setupLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favTavleView.reloadData()
+    }
 }
 
 extension FavoriteViewController: UITableViewDelegate {
@@ -41,9 +49,9 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell
-        guard let newCell = cell else { return PostTableViewCell()}
-        return newCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as! PostTableViewCell
+        cell.savedContent = favoritePost[indexPath.row]
+        return cell
     }
 }
 
