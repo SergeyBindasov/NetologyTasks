@@ -8,18 +8,22 @@
 
 import UIKit
 import StorageService
+import CoreData
 
 
 class ProfileViewController: UIViewController {
     
     weak var coordinator: ProfileFlowCoordinator?
     
+    let postDataModel: PostDataModel
+    
     let userService: UserService
     let userName: String
     
-    init(userService: UserService, userName: String) {
+    init(userService: UserService, userName: String, postDataModel: PostDataModel) {
         self.userService = userService
         self.userName = userName
+        self.postDataModel = postDataModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,6 +49,7 @@ class ProfileViewController: UIViewController {
         setupLayout()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
     
@@ -117,6 +122,9 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             coordinator?.showGallery()
-        } else { return }
+        } else {
+            postDataModel.createNewPost(path: indexPath.row)
+        }
+            
     }
 }

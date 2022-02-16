@@ -14,7 +14,7 @@ class FavoriteViewController: UIViewController {
     
     weak var coordinator: FavoriteFlowCoordinator?
     
-    var favoritePost: [Post] = []
+    var favoritePost = [SavedPost]()
     
     private lazy var favTavleView: UITableView = {
         let tableView = UITableView()

@@ -33,7 +33,8 @@ class ProfileFlowCoordinator: Coordinator {
     func loginAction(userService: UserService, userName: String) {
         let currentUser = userService
         let name = userName
-        let profileVC = ProfileViewController(userService: currentUser, userName: name)
+        let postData = PostDataModel()
+        let profileVC = ProfileViewController(userService: currentUser, userName: name, postDataModel: postData)
         profileVC.coordinator = self
         navigationController.pushViewController(profileVC, animated: true)
     }

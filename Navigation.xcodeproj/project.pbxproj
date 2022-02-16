@@ -43,6 +43,7 @@
 		A58D08C327BD1B3E000C6D1E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58D08C227BD1B3E000C6D1E /* FavoriteViewController.swift */; };
 		A58D08C627BD1CE4000C6D1E /* FavoriteFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58D08C527BD1CE4000C6D1E /* FavoriteFlowCoordinator.swift */; };
 		A58D08EC27BD2738000C6D1E /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A58D08EA27BD2738000C6D1E /* CoreDataModel.xcdatamodeld */; };
+		A58D08EE27BD2EEB000C6D1E /* PostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58D08ED27BD2EEB000C6D1E /* PostDataModel.swift */; };
 		A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D01ED2537870E00EA3C75 /* LogInViewController.swift */; };
 		A5AF7133254ECFD4008231D1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */; };
 		A5AF7135254F0531008231D1 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF7134254F0531008231D1 /* PhotosCollectionViewCell.swift */; };
@@ -119,6 +120,7 @@
 		A58D08C227BD1B3E000C6D1E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A58D08C527BD1CE4000C6D1E /* FavoriteFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFlowCoordinator.swift; sourceTree = "<group>"; };
 		A58D08EB27BD2738000C6D1E /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A58D08ED27BD2EEB000C6D1E /* PostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataModel.swift; sourceTree = "<group>"; };
 		A59D01ED2537870E00EA3C75 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A5AF7132254ECFD4008231D1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		A5AF7134254F0531008231D1 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				A53B4EDF26BB148000582D3E /* CustomTextfield.swift */,
 				A5F5777127B7B7DD00E6613E /* AuthorizationModel.swift */,
 				A58D08EA27BD2738000C6D1E /* CoreDataModel.xcdatamodeld */,
+				A58D08ED27BD2EEB000C6D1E /* PostDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				A59D01EE2537870E00EA3C75 /* LogInViewController.swift in Sources */,
 				A56AEE1326790B8E00F185B8 /* MyLoginFactory.swift in Sources */,
+				A58D08EE27BD2EEB000C6D1E /* PostDataModel.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				A56AEE0D2679005E00F185B8 /* LoginInspector.swift in Sources */,
 				A514564A2538353B00396F4B /* Alpha.swift in Sources */,
