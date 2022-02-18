@@ -15,7 +15,20 @@ class PostDataModel {
     
     var arrayOfPosts: [SavedPost] = []
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var persistentContainer: NSPersistentContainer = {
+     
+        let container = NSPersistentContainer(name: "CoreDataModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     
     func createNewPost(path: Int) {
         let newPost = SavedPost(context: self.context)
