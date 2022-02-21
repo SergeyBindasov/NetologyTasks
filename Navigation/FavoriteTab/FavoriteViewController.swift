@@ -89,14 +89,11 @@ extension FavoriteViewController: UISearchBarDelegate {
         request.predicate = NSPredicate(format: "author CONTAINS[cd] %@", searchText)
         request.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
         DispatchQueue.main.async { [self] in
-        favoritePost = self.dataModel.loadPosts(with: request)
-
-        favTavleView.reloadData()
+            favoritePost = self.dataModel.loadPosts(with: request)
+            favTavleView.reloadData()
+        }
     }
 }
-}
-
-
 
 extension FavoriteViewController {
     @objc func searchButtonPressed() {
@@ -104,6 +101,10 @@ extension FavoriteViewController {
     }
     
     @objc func cancelButtonPressed() {
+        DispatchQueue.main.async { [self] in
+            self.favoritePost = self.dataModel.loadPosts()
+            self.favTavleView.reloadData()
+        }
         searchBar.isHidden = true
     }
     
@@ -115,7 +116,4 @@ extension FavoriteViewController {
         }
     }
 }
-
-
-
 
