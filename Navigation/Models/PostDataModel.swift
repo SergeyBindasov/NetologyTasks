@@ -30,8 +30,13 @@ class PostDataModel {
         return persistentContainer.viewContext
     }
     
+    var backgroundContext: NSManagedObjectContext {
+        return persistentContainer.newBackgroundContext()
+    }
+    
     func createNewPost(path: Int) {
-        let newPost = SavedPost(context: self.context)
+        let newBackgroundContext = backgroundContext
+        let newPost = SavedPost(context: newBackgroundContext)
         newPost.author = Storage.Content.content[path].author
         newPost.postDescription = Storage.Content.content[path].description
         if let image = Storage.Content.content[path].image {
@@ -41,10 +46,10 @@ class PostDataModel {
         newPost.likes = Int32(Storage.Content.content[path].likes)
         newPost.views = Int32(Storage.Content.content[path].views)
         arrayOfPosts.append(newPost)
-        savePost()
+        savePost(context: newBackgroundContext)
     }
     
-    func savePost() {
+    func savePost(context: NSManagedObjectContext) {
         do {
             try context.save()
         } catch {
@@ -52,8 +57,13 @@ class PostDataModel {
         }
     }
     
-    func loadPosts() -> [SavedPost] {
-        let request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()
+    func deletePost(post: SavedPost) {
+        context.delete(post)
+        savePost(context: context)
+        
+    }
+    
+    func loadPosts(with request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()) -> [SavedPost] {
         do {
         arrayOfPosts = try context.fetch(request)
         } catch {
