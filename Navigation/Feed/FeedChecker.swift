@@ -11,7 +11,7 @@ import Foundation
 final class FeedChecker {
     
     
-    let password: String = "12345"
+    let password: String = "123456"
     
     func wordChecked(word: String) -> Bool {
         if word == password {
