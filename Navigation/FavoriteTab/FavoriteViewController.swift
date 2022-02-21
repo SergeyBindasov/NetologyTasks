@@ -40,6 +40,17 @@ class FavoriteViewController: UIViewController {
 }
 
 extension FavoriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (_, _, _) in
+            guard let self = self else { return }
+            self.dataModel.deletePost(post: self.favoritePost[indexPath.row])
+            self.favTavleView.deleteRows(at: [indexPath], with: .automatic)
+            self.favTavleView.reloadData()
+        }
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
     
 }
 

@@ -57,7 +57,9 @@ class PostDataModel {
         }
     }
     
-    func deletePost() {
+    func deletePost(post: SavedPost) {
+        context.delete(post)
+        savePost(context: context)
         
     }
     
