@@ -36,11 +36,16 @@ final class MainCoordinator: Coordinator {
         profileNavigition.navigationBar.isHidden = true
         let profileFlowCoordinator = ProfileFlowCoordinator(navigationController: profileNavigition)
         
+        let favoriteNavigation = UINavigationController()
+        favoriteNavigation.navigationBar.prefersLargeTitles = true
+        favoriteNavigation.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart.fill"), tag: 0)
+        let favoriteFlowCoordinator = FavoriteFlowCoordinator(navigationController: favoriteNavigation)
         
         
-        coordinators = [feedFlowCoordinator, profileFlowCoordinator]
+        
+        coordinators = [feedFlowCoordinator, profileFlowCoordinator, favoriteFlowCoordinator]
         tabbar.navigationController?.navigationBar.isHidden = true
-        tabbar.viewControllers = [feedNavigation, profileNavigition]
+        tabbar.viewControllers = [feedNavigation, profileNavigition, favoriteNavigation]
         
     }
 //

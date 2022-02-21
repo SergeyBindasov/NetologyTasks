@@ -9,11 +9,11 @@
 import UIKit
 
 public struct Post {
-    public let author: String
-    public let description: String
-    public let image: UIImage?
-    public let likes: Int
-    public let views: Int
+    public var author: String
+    public var description: String
+    public var image: UIImage?
+    public var likes: Int
+    public var views: Int
 }
 
 public struct Pic {
