@@ -19,6 +19,14 @@ class FavoriteViewController: UIViewController {
         return dataModel.loadPosts()
     }
     
+    private lazy var searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.isHidden = true
+        search.placeholder = "Поиск по автору"
+        search.delegate = self
+        return search
+    }()
+    
     private lazy var favTavleView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
@@ -31,10 +39,16 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        navigationItem.titleView = searchBar
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .undo , target: self, action: #selector(cancelButtonPressed)),
+            UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonPressed))
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
         favTavleView.reloadData()
     }
 }
@@ -55,6 +69,7 @@ extension FavoriteViewController: UITableViewDelegate {
 }
 
 extension FavoriteViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoritePost.count
     }
@@ -66,15 +81,30 @@ extension FavoriteViewController: UITableViewDataSource {
     }
 }
 
+extension FavoriteViewController: UISearchBarDelegate {
+
+}
+
+
+
 extension FavoriteViewController {
+    @objc func searchButtonPressed() {
+        searchBar.isHidden = false
+    }
+    
+    @objc func cancelButtonPressed() {
+        searchBar.isHidden = true
+    }
+    
     func setupLayout() {
-        view.addSubviews(favTavleView)
+        view.addSubviews(searchBar,favTavleView)
         
         favTavleView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaInsets)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
+
 
 
 
