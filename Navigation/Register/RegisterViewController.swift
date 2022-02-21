@@ -9,10 +9,15 @@
 import UIKit
 import SnapKit
 import Firebase
+import RealmSwift
 
 class RegisterViewController: UIViewController {
     
     weak var coordinator: ProfileFlowCoordinator?
+    
+    let realm = try! Realm()
+    
+    var userIdentification: Results<AuthorizationModel>?
     
     private lazy var registerView: UIView = {
         let registerView = UIView()
@@ -71,7 +76,7 @@ class RegisterViewController: UIViewController {
     
     private lazy var registerButton: CustomButton = {
         let button = CustomButton(onTap: self.registerAction)
-        button.setTitle("Зарегистрироватвь", for: .normal)
+        button.setTitle("Зарегистрировать", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
@@ -84,6 +89,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
     }
 }
@@ -131,6 +137,11 @@ extension RegisterViewController {
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    let newUser = AuthorizationModel()
+                    newUser.userLogin = email
+                    newUser.userPassword = password
+                    newUser.isCreated = true
+                    self.saveUserId(model: newUser)
                     let alert = UIAlertController(title: "Поздравляем!", message: "Регистрация прошла успешно", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ок", style: .cancel) { action in
                         self.dismiss(animated: true, completion: nil)
@@ -152,5 +163,13 @@ extension RegisterViewController {
         
     }
     
-   
+    func saveUserId(model: AuthorizationModel) {
+        do {
+            try realm.write({
+                realm.add(model)
+            })
+        } catch {
+            print ("произошла ошибка сохраняя пользовательские данные \(error.localizedDescription)")
+        }
+    }
 }
