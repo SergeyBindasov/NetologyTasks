@@ -12,19 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
-        //let appConfiguration: AppConfiguration
-        
-        var _: AppConfiguration
-        
-        let stringOne = AppConfiguration.firstCase(first: "https://swapi.dev/api/people/8")
-        let stringTwo = AppConfiguration.secondCase(second: "https://swapi.dev/api/starships/3")
-        let stringThree = AppConfiguration.thirdCase(third: "https://swapi.dev/api/planets/5")
-        
-        NetworkManager.performRequest(with: stringOne.urlString)
-        NetworkManager.performRequest(with: stringTwo.urlString)
-        NetworkManager.performRequest(with: stringThree.urlString)
-     
+  
         return true
     }
 
