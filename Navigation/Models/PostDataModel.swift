@@ -63,8 +63,7 @@ class PostDataModel {
         
     }
     
-    func loadPosts() -> [SavedPost] {
-        let request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()
+    func loadPosts(with request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()) -> [SavedPost] {
         do {
         arrayOfPosts = try context.fetch(request)
         } catch {

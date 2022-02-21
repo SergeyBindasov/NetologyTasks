@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class FavoriteViewController: UIViewController {
     
@@ -15,10 +16,8 @@ class FavoriteViewController: UIViewController {
     
     let dataModel = PostDataModel()
     
-    var favoritePost: [SavedPost] {
-        return dataModel.loadPosts()
-    }
-    
+    var favoritePost: [SavedPost] = []
+      
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
         search.isHidden = true
@@ -38,6 +37,7 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        favoritePost = dataModel.loadPosts()
         setupLayout()
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItems = [
@@ -82,7 +82,18 @@ extension FavoriteViewController: UITableViewDataSource {
 }
 
 extension FavoriteViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request: NSFetchRequest<SavedPost> = SavedPost.fetchRequest()
+        guard let searchText = searchBar.text else { return }
+        request.predicate = NSPredicate(format: "author CONTAINS[cd] %@", searchText)
+        request.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
+        DispatchQueue.main.async { [self] in
+        favoritePost = self.dataModel.loadPosts(with: request)
 
+        favTavleView.reloadData()
+    }
+}
 }
 
 
