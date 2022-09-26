@@ -32,7 +32,6 @@ class LogInViewController: UIViewController {
         scrollView.delegate = self
         scrollView.backgroundColor = .white
         return scrollView
-        
     }()
     
     private lazy var vkLogo: UIImageView = {
