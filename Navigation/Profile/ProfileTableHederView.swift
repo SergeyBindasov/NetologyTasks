@@ -36,7 +36,7 @@ class ProfileTableHederView: UIView {
     
     public lazy var status: UILabel = {
         let text = UILabel()
-        text.text = "Thinking about smth..."
+        text.text = "Thinking about smth...".localized
         text.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         text.textColor = .gray
         text.textAlignment = .center
@@ -46,7 +46,7 @@ class ProfileTableHederView: UIView {
     
     private lazy var setStatusTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Set a new status"
+        textField.placeholder = "Set a new status".localized
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
         textField.layer.backgroundColor = UIColor.white.cgColor
@@ -69,7 +69,7 @@ class ProfileTableHederView: UIView {
         button.layer.shadowRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.setTitle("Set status", for: .normal)
+        button.setTitle("Set status".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.toAutoLayuot()
         return button
@@ -97,7 +97,7 @@ class ProfileTableHederView: UIView {
     }
     
     func buttonPressed() {
-    setStatusTextField.text = status.text ?? "Нет статуса"
+    setStatusTextField.text = status.text ?? "No status"
         button.backgroundColor = .orange
         setStatusTextField.resignFirstResponder()
         

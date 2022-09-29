@@ -50,7 +50,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         setupLayout()
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = false
-        navigationItem.title = "Photo Galley"
+        navigationItem.title = "Photo Galley".localized
         imagePublisher?.subscribe(self)
         imagePublisher?.addImagesWithTimer(time: 0.5, repeat: 20, userImages: converter(images: Storage.Photos.photos))
     }

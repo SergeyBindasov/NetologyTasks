@@ -23,7 +23,7 @@ class FavoriteFlowCoordinator: Coordinator {
     
     func start() {
         let favorite = FavoriteViewController()
-        favorite.title = "Favorite"
+        favorite.title = "Favorite".localized
         favorite.coordinator = self
         navigationController.pushViewController(favorite, animated: true)
     }

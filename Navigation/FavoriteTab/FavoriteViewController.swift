@@ -21,7 +21,7 @@ class FavoriteViewController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
         search.isHidden = true
-        search.placeholder = "Поиск по автору"
+        search.placeholder = "Search by auther".localized
         search.delegate = self
         return search
     }()
@@ -55,7 +55,7 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (_, _, _) in
+        let action = UIContextualAction(style: .destructive, title: "Delete".localized) { [weak self] (_, _, _) in
             guard let self = self else { return }
             self.dataModel.deletePost(post: self.favoritePost[indexPath.row])
             self.favTavleView.deleteRows(at: [indexPath], with: .automatic)

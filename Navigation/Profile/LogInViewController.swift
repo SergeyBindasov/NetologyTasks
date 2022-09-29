@@ -43,7 +43,7 @@ class LogInViewController: UIViewController {
     
     private lazy var loginButton: CustomButton = {
         let button = CustomButton(onTap: self.loginAction)
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Login".localized, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)
@@ -56,7 +56,7 @@ class LogInViewController: UIViewController {
     
     public lazy var loginTF: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email or phone"
+        textField.placeholder = "Email or phone".localized
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
@@ -73,7 +73,7 @@ class LogInViewController: UIViewController {
     
     private lazy var passwordTF: UITextField = {
         let secondTextField = UITextField()
-        secondTextField.placeholder = "Password"
+        secondTextField.placeholder = "Password".localized
         secondTextField.layer.borderColor = UIColor.lightGray.cgColor
         secondTextField.layer.borderWidth = 0.5
         secondTextField.layer.cornerRadius = 10
@@ -99,14 +99,14 @@ class LogInViewController: UIViewController {
     
     private lazy var lineLabel: UILabel = {
         let label = UILabel()
-        label.text = "Все еще нет аккаунта?"
+        label.text = "Still have no an account?".localized
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return label
     }()
     
     private lazy var registerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Зарегистрируйся!"
+        label.text = "Enroll now!".localized
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
         label.isUserInteractionEnabled = true
@@ -166,7 +166,7 @@ class LogInViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: loginText, password: passwordText) { result, error in
             if let exsistingError = error {
-                let alert = UIAlertController(title: "Что-то пошло не так", message: exsistingError.localizedDescription, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Something went wrong".localized, message: exsistingError.localizedDescription, preferredStyle: .alert)
                 let action = UIAlertAction(title: "Оk", style: .cancel) { action in
                 }
                 alert.addAction(action)

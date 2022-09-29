@@ -13,7 +13,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var photosLable: UILabel = {
         let lable = UILabel()
-        lable.text = "Photos"
+        lable.text = "Photos".localized
         lable.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         lable.textColor = .black
         lable.toAutoLayuot()
