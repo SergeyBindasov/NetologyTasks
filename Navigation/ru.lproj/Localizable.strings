@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Sergey on 28.09.2022.
+  Copyright © 2022 Artem Novichkov. All rights reserved.
+*/
+
+"Check!" = "Проверь!";
+"CheckData" = "ПроверитьДанные";
+"Feed" = "Лента";
+"Profile" = "Профиль";
+"Favorite" = "Избранное";
+"Post" = "Пост";
+"Info" = "Инфо";
+"Thinking about smth..." = "Умные мысли";
+"Set a new status" = "Задать новый статус";
+"Set status" = "Задать статус";
+"No status" = "Нет статуса";
+"Photos" = "Фото";
+"Login" = "Войти";
+"Email or phone" = "Почта или телефон";
+"Password" = "Пароль";
+"Still have no an account?" = "Все еще нет аккаунта?";
+"Enroll now!" = "Зарегистрируйся!";
+"Something went wrong" = "Что-то пошло не так";
+"Photo Galley" = "Галерея";
+"Search by auther" = "Поиск по автору";
+"Delete" = "Удалить";
+

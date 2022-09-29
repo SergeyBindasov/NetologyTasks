@@ -28,17 +28,17 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(tabbar, animated: true)
         
         let feedNavigation = UINavigationController()
-        feedNavigation.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
+        feedNavigation.tabBarItem = UITabBarItem(title: "Feed".localized, image: UIImage(systemName: "house.fill"), tag: 0)
         let feedFlowCoordinator = FeedFlowCoordinator(navigationController: feedNavigation)
         
         let profileNavigition = UINavigationController()
-        profileNavigition.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 0)
+        profileNavigition.tabBarItem = UITabBarItem(title: "Profile".localized, image: UIImage(systemName: "person.fill"), tag: 0)
         profileNavigition.navigationBar.isHidden = true
         let profileFlowCoordinator = ProfileFlowCoordinator(navigationController: profileNavigition)
         
         let favoriteNavigation = UINavigationController()
         favoriteNavigation.navigationBar.prefersLargeTitles = true
-        favoriteNavigation.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart.fill"), tag: 0)
+        favoriteNavigation.tabBarItem = UITabBarItem(title: "Favorite".localized, image: UIImage(systemName: "heart.fill"), tag: 0)
         let favoriteFlowCoordinator = FavoriteFlowCoordinator(navigationController: favoriteNavigation)
         
         

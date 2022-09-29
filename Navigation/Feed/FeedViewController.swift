@@ -27,7 +27,7 @@ final class FeedViewController: UIViewController {
     }()
     
     private lazy var textfield: CustomTextfield = {
-        let textField = CustomTextfield(placeholder: "CheckData") { [weak self] text in
+        let textField = CustomTextfield(placeholder: "CheckData".localized) { [weak self] text in
             self?.text = text
         }
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -45,7 +45,7 @@ final class FeedViewController: UIViewController {
     
     private lazy var button: CustomButton = {
         let button = CustomButton(onTap: self.checkTextfield)
-        button.setTitle("Check!", for: .normal)
+        button.setTitle("Check!".localized, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
         button.setTitleColor(.white, for: .normal)

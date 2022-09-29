@@ -24,7 +24,7 @@ class FeedFlowCoordinator: Coordinator {
     func start() {
         let feedVC = FeedViewController(feedChecker: FeedChecker())
        
-        feedVC.title = "Feed"
+        feedVC.title = "Feed".localized
         feedVC.coordinator = self
         navigationController.pushViewController(feedVC, animated: true)
         
@@ -34,14 +34,14 @@ class FeedFlowCoordinator: Coordinator {
     func showPost() {
         let postVC = PostViewController()
         postVC.coordinator = self
-        postVC.title = "Post"
+        postVC.title = "Post".localized
         navigationController.pushViewController(postVC, animated: true)
     }
     
     func showInfo() {
         let infoVC = InfoViewController()
         infoVC.coordinator = self
-        infoVC.title = "Info"
+        infoVC.title = "Info".localized
         infoVC.modalPresentationStyle = .popover
         navigationController.present(infoVC, animated: true, completion: nil)
     }
