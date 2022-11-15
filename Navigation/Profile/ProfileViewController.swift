@@ -35,6 +35,7 @@ class ProfileViewController: UIViewController {
         let tv = UITableView(frame: .zero, style: .grouped)
         tv.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tv.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        tv.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         tv.sectionFooterHeight = 8
         tv.showsVerticalScrollIndicator = false
         tv.dataSource = self
@@ -54,7 +55,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         navigationController?.navigationBar.isHidden = true
         tableView.addGestureRecognizer(tap)
     }

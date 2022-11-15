@@ -29,6 +29,7 @@ class FavoriteViewController: UIViewController {
     private lazy var favTavleView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        tableView.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
@@ -36,7 +37,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         favoritePost = dataModel.loadPosts()
         setupLayout()
         navigationItem.titleView = searchBar

@@ -15,7 +15,7 @@ class PhotosTableViewCell: UITableViewCell {
         let lable = UILabel()
         lable.text = "Photos".localized
         lable.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        lable.textColor = .black
+        lable.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         lable.toAutoLayuot()
         return lable
     }()
@@ -87,6 +87,7 @@ class PhotosTableViewCell: UITableViewCell {
 
 private extension PhotosTableViewCell {
     func setupLayout() {
+        contentView.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         contentView.addSubview(photosLable)
         contentView.addSubview(arrowSign)
         contentView.addSubview(gallery)
