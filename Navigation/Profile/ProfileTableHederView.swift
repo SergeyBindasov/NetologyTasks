@@ -27,7 +27,7 @@ class ProfileTableHederView: UIView {
         let lable = UILabel()
         lable.text = "Dusty The Cat"
         lable.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        lable.textColor = .black
+        lable.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         lable.textAlignment = .center
         lable.numberOfLines = 0
         lable.toAutoLayuot()
@@ -38,7 +38,7 @@ class ProfileTableHederView: UIView {
         let text = UILabel()
         text.text = "Thinking about smth...".localized
         text.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        text.textColor = .gray
+        text.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         text.textAlignment = .center
         text.toAutoLayuot()
         return text
@@ -49,10 +49,10 @@ class ProfileTableHederView: UIView {
         textField.placeholder = "Set a new status".localized
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
-        textField.layer.backgroundColor = UIColor.white.cgColor
+        textField.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "textField")!, darkMode: UIColor(named: "textField")!)
         textField.layer.cornerRadius = 12
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        textField.textColor = .black
+        textField.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.addTarget(self, action: #selector(setStatus(_ :)), for: .editingChanged)
@@ -106,6 +106,8 @@ class ProfileTableHederView: UIView {
     }
     
     private func setupHeader() {
+        
+        backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         
         let constraints = [
             avatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),

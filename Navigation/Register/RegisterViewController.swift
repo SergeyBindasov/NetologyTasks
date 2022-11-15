@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
     
     private lazy var registerView: UIView = {
         let registerView = UIView()
-        registerView.backgroundColor = .white
+        registerView.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         return registerView
     }()
     
@@ -38,8 +38,8 @@ class RegisterViewController: UIViewController {
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
-        textField.backgroundColor = .systemGray6
-        textField.textColor = .black
+        textField.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "textField")!, darkMode: UIColor(named: "textField")!)
+        textField.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.tintColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
         textField.autocapitalizationType = .none
@@ -55,8 +55,8 @@ class RegisterViewController: UIViewController {
         secondTextField.layer.borderColor = UIColor.lightGray.cgColor
         secondTextField.layer.borderWidth = 0.5
         secondTextField.layer.cornerRadius = 10
-        secondTextField.backgroundColor = .systemGray6
-        secondTextField.textColor = .black
+        secondTextField.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "textField")!, darkMode: UIColor(named: "textField")!)
+        secondTextField.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         secondTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         secondTextField.isSecureTextEntry = false
         secondTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: secondTextField.frame.height))

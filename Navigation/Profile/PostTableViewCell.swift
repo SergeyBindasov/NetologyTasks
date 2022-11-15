@@ -37,7 +37,7 @@ class PostTableViewCell: UITableViewCell {
         let text = UILabel()
         text.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         text.numberOfLines = 2
-        text.textColor = .black
+        text.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         text.toAutoLayuot()
         return text
     }()
@@ -54,7 +54,7 @@ class PostTableViewCell: UITableViewCell {
         let description = UILabel()
         description.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         description.numberOfLines = 0
-        description.textColor = .gray
+        description.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         description.toAutoLayuot()
         return description
     }()
@@ -62,7 +62,7 @@ class PostTableViewCell: UITableViewCell {
     private var postLikes: UILabel = {
         let likes = UILabel()
         likes.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        likes.textColor = .black
+        likes.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         likes.toAutoLayuot()
         return likes
     }()
@@ -70,7 +70,7 @@ class PostTableViewCell: UITableViewCell {
     private var postViews: UILabel = {
         let views = UILabel()
         views.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        views.textColor = .black
+        views.textColor = UIColor.createColor(lightMode: UIColor(named: "text")!, darkMode: UIColor(named: "text")!)
         views.toAutoLayuot()
         return views
     }()
@@ -86,6 +86,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func setupLayout() {
+        contentView.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         contentView.addSubview(postAuthor)
         contentView.addSubview(postImageView)
         contentView.addSubview(postDescription)

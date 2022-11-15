@@ -24,7 +24,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
         collection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
         collection.delegate = self
         collection.dataSource = self
-        collection.backgroundColor = .white
+        collection.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         collection.showsVerticalScrollIndicator = false
         collection.toAutoLayuot()
         
@@ -48,7 +48,7 @@ class PhotosViewController: UIViewController, ImageLibrarySubscriber {
     override func viewDidLoad() {
         super .viewDidLoad()
         setupLayout()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "background")!, darkMode: UIColor(named: "background")!)
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Photo Galley".localized
         imagePublisher?.subscribe(self)
@@ -108,6 +108,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
 
 private extension PhotosViewController {
     func setupLayout() {
+       
         view.addSubview(galleryCollection)
         
         let contraints = [
