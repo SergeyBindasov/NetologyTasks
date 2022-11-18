@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import RealmSwift
+import LocalAuthentication
 
 class LogInViewController: UIViewController {
     
@@ -19,6 +20,10 @@ class LogInViewController: UIViewController {
     var userIdentification: Results<AuthorizationModel>?
     
     weak var coordinator: ProfileFlowCoordinator?
+    
+    var context = LAContext()
+    let policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics
+    var canUserBiometrics = false
     
     private lazy var loginView: UIView = {
         let loginView = UIView()
@@ -113,29 +118,41 @@ class LogInViewController: UIViewController {
         return label
     }()
     
+    private lazy var faceIdButton: UIButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: "faceid")
+        button.setImage(image, for: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 60), forImageIn: .normal)
+        button.addTarget(self, action: #selector(faceIdPressed), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         checkAuthorization()
         
+        var error: NSError?
         let tap = UITapGestureRecognizer(target: self, action: #selector(registerTapped))
         registerLabel.addGestureRecognizer(tap)
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        canUserBiometrics = context.canEvaluatePolicy(policy, error: &error)
+        
+        if let error = error {
+            print(error)
+        }
     }
     
     @objc private func registerTapped(sender:UITapGestureRecognizer) {
-       
-       
         registerLabel.textColor = .opaqueSeparator
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.registerLabel.textColor = #colorLiteral(red: 0.2989781797, green: 0.5310710073, blue: 0.7931908965, alpha: 1)
             self.coordinator?.register()
-   }
+        }
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
@@ -155,11 +172,11 @@ class LogInViewController: UIViewController {
         
         var userService: UserService
         
-        #if DEBUG
+#if DEBUG
         userService = TestUserService()
-        #else
+#else
         userService = CurrentUserService()
-        #endif
+#endif
         
         guard let loginText = loginTF.text else { return }
         guard let passwordText = passwordTF.text else { return }
@@ -186,6 +203,31 @@ class LogInViewController: UIViewController {
         }
     }
     
+    @objc func faceIdPressed() {
+        guard canUserBiometrics else { return }
+        context.localizedCancelTitle = "Использовать авторизацию через email/пароль"
+        
+        context.evaluatePolicy(policy, localizedReason: "Авторизируйтесь для входа") { [weak self] success, error in
+            
+            DispatchQueue.main.async { [weak self] in
+                guard self != nil else {return}
+            }
+            
+            if let error = error {
+                print(error)
+            }
+            
+            if success {
+                DispatchQueue.main.async { [weak self] in
+                    guard let loginText = self?.loginTF.text else { return }
+                    self?.coordinator?.loginAction(userService: CurrentUserService(), userName: loginText)
+                }
+            } else {
+                print("Ошибка FaceID")
+            }
+        }
+    }
+    
     @objc private func enterLogin(_ textField: UITextField) {
     }
     
@@ -198,8 +240,8 @@ class LogInViewController: UIViewController {
     private func setupLayout() {
         view.addSubviews(scrollView)
         scrollView.addSubviews(loginView)
-        loginView.addSubviews(vkLogo, loginButton, lineLabel, stackViewTF, registerLabel)
-
+        loginView.addSubviews(vkLogo, loginButton, lineLabel, stackViewTF, registerLabel,faceIdButton)
+        
         
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -231,7 +273,11 @@ class LogInViewController: UIViewController {
             lineLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 36),
             registerLabel.leadingAnchor.constraint(equalTo: lineLabel.trailingAnchor, constant: 4),
             registerLabel.centerYAnchor.constraint(equalTo: lineLabel.centerYAnchor),
-            registerLabel.trailingAnchor.constraint(lessThanOrEqualTo: loginView.trailingAnchor, constant: -16)
+            registerLabel.trailingAnchor.constraint(lessThanOrEqualTo: loginView.trailingAnchor, constant: -16),
+            faceIdButton.widthAnchor.constraint(equalToConstant: 60),
+            faceIdButton.heightAnchor.constraint(equalToConstant: 60),
+            faceIdButton.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
+            faceIdButton.topAnchor.constraint(equalTo: registerLabel.bottomAnchor, constant: 24)
             
         ]
         NSLayoutConstraint.activate(constraints)
