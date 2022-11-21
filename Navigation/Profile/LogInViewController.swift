@@ -16,7 +16,7 @@ class LogInViewController: UIViewController {
     var delegate: LoginViewControllerDelegate?
     
     let realm = try! Realm()
-    
+
     var userIdentification: Results<AuthorizationModel>?
     
     weak var coordinator: ProfileFlowCoordinator?
@@ -131,7 +131,6 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         checkAuthorization()
-        
         var error: NSError?
         let tap = UITapGestureRecognizer(target: self, action: #selector(registerTapped))
         registerLabel.addGestureRecognizer(tap)
