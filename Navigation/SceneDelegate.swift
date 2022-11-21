@@ -13,8 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     var coordinator: MainCoordinator?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -23,9 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController = UINavigationController()
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()
-        
         window?.rootViewController = navController
-        
         window?.makeKeyAndVisible()
         
     }
